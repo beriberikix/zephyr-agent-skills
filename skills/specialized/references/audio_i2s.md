@@ -50,6 +50,6 @@ void play_buffer(void *data, size_t len) {
 ```
 
 ## Professional Strategies
-- **Ping-Pong Buffering**: Always use at least two buffers to ensure the I2S DMA always has data ready while the application is filling the next buffer.
+- **Ping-Pong Buffering**: Always use at least two buffers to ensure the I2S DMA always has data ready while the application is filling the next buffer. See **[hardware-io](../../hardware-io/SKILL.md)** for DMA configuration patterns.
 - **Volume Ramping**: Gradually increase/decrease volume in software to prevent "pops" and "clicks" when starting or stopping audio.
 - **Devicetree**: Link your I2S device to the corresponding Audio Codec using the `codec` property in DT.

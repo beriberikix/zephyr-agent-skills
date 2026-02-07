@@ -20,6 +20,9 @@ CONFIG_GOLIOTH_DEVICE_ID="my-device@my-project"
 CONFIG_GOLIOTH_DEVICE_PSK="my-pre-shared-key"
 ```
 
+> [!WARNING]
+> **Never hardcode credentials in production.** Use the **settings** subsystem or secure storage (TF-M) to store device credentials provisioned during manufacturing. See **[security-updates](../../security-updates/SKILL.md)** for secure storage patterns.
+
 ## Implementation Patterns
 
 ### 1. Connecting to the Cloud

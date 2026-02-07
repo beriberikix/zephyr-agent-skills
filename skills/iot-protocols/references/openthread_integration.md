@@ -3,7 +3,7 @@
 Zephyr includes a built-in OpenThread stack, an open-source implementation of the Thread networking protocol. Thread is a low-power, secure, and reliable mesh network for IoT devices.
 
 ## Core Concepts
-- **Thread Role**: Devices can be Leaders, Routers, OR REEDs (Router Eligible End Devices), or Sleepy End Devices (SED).
+- **Thread Role**: Devices can be Leaders, Routers, or REEDs (Router Eligible End Devices), or Sleepy End Devices (SED).
 - **L2 Layer**: Zephyr integrates OpenThread at the Link Layer (L2).
 - **Dataset**: Configuration (PAN ID, Network Name, Master Key) used to join a Thread network.
 
@@ -55,3 +55,7 @@ ot thread start
 - **Sleepy End Devices (SED)**: Use `CONFIG_OPENTHREAD_MTD_SED` for battery-powered devices to enable duty-cycling.
 - **Border Routers**: A Border Router is required to bridge the Thread mesh to an external IP network (Wi-Fi/Ethernet).
 - **Commissioning**: Use Bluetooth Low Energy (BLE) for secure initial network commissioning (see **Matter** reference).
+
+## See Also
+- **[connectivity-ip](../../connectivity-ip/SKILL.md)**: For CoAP and MQTT protocols running over Thread networks.
+- **[matter_devices.md](matter_devices.md)**: For Matter-over-Thread smart home integration.

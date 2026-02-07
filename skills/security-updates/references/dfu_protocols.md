@@ -27,6 +27,9 @@ CONFIG_BT=y
 CONFIG_BT_PERIPHERAL=y
 ```
 
+> [!NOTE]
+> For detailed BLE configuration and advertising patterns, see **[connectivity-ble](../../connectivity-ble/SKILL.md)**.
+
 ## MCUmgr CLI Usage
 
 ### 1. Identify the device

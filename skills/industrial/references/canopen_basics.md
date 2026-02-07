@@ -34,3 +34,6 @@ CO_OD_get_u32(CO->OD, 0x6040, 0, &val); // Read 'Controlword'
 - **Heartbeat**: Always enable the Heartbeat producer to allow other nodes to monitor your device's health.
 - **SYNC Objects**: Use SYNC to synchronize the execution of multiple nodes (e.g., ensuring four motor controllers start at the exact same time).
 - **Emergency (EMCY)**: Use emergency messages to broadcast critical failures immediately.
+
+## See Also
+- **[connectivity-usb-can](../../connectivity-usb-can/SKILL.md)**: For CAN bus fundamentals, filters, and USB-to-CAN adapters.

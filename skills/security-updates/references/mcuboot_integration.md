@@ -57,6 +57,14 @@ MCUboot is usually built as a separate Zephyr application located in `bootloader
 west build -b <board> bootloader/mcuboot/boot/zephyr
 ```
 
+### Using Sysbuild (Recommended)
+Modern Zephyr uses **Sysbuild** to build both MCUboot and your application in a single command:
+
+```bash
+# Build both bootloader and application together
+west build -b nucleo_f401re --sysbuild samples/basic/blinky
+```
+
 ## Best Practices
 - **Slot Alignment**: `slot0` and `slot1` must be identical in size to ensure updates can swap correctly.
 - **Hardware-Specific Offsets**: Always consult your SoC's reference manual for the correct starting address of the flash.

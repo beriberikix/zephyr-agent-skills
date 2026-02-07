@@ -54,7 +54,12 @@ void load_and_run(void) {
 - **Hardware Drivers**: Dynamically loading a driver for a newly attached peripheral.
 - **AI Models**: Loading different model weights/logic based on the detected environment.
 
+## Security Considerations
+
+> [!CAUTION]
+> **Always verify the signature of an LLEXT module before loading it!** Unsigned or improperly signed extensions can execute arbitrary code with full system privileges. Use the **[security-updates](../../security-updates/SKILL.md)** skill patterns for image signing and verification.
+
 ## Best Practices
-- **Security**: Always verify the signature of an LLEXT module before loading it! Use the **security-updates** skill patterns.
 - **Symbol Export**: Use `EXPORT_SYMBOL(fn_name)` in your main application to make functions available to the extension.
 - **Memory Management**: Extensions consume heap or statically reserved RAM. Ensure your system has enough headroom.
+- **Version Control**: Track extension versions to prevent loading incompatible modules.

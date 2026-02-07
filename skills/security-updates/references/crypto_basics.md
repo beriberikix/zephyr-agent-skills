@@ -13,12 +13,22 @@ CONFIG_MBEDTLS_ENABLE_ALL_256_CURVES=y
 
 ### Example: Random Number Generation
 ```c
-#include <zephyr/crypto/crypto.h>
+#include <zephyr/random/random.h>
 
 void get_random(uint8_t *output, size_t len) {
-    const struct device *dev = DEVICE_DT_GET(DT_CHOSEN(zephyr_crypto_controller));
+    // Use Zephyr's entropy API for cryptographically secure random numbers
+    sys_csrand_get(output, len);
+}
+```
+
+For hardware-accelerated entropy:
+```c
+#include <zephyr/drivers/entropy.h>
+
+void get_hw_random(uint8_t *output, size_t len) {
+    const struct device *dev = DEVICE_DT_GET(DT_CHOSEN(zephyr_entropy));
     if (device_is_ready(dev)) {
-        crypto_get_entropy(dev, output, len);
+        entropy_get_entropy(dev, output, len);
     }
 }
 ```

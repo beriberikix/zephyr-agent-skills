@@ -75,5 +75,5 @@ void access_shared(void) {
 
 ## Best Practices
 - **Cache Management**: Before reading from shared RAM, ensure you invalidate the cache. Before writing, ensure you flush (clean) the cache.
-- **Mutex vs. Spinlock**: Use `k_mutex` for long synchronization inside threads on a single core, but **must** use `k_spinlock` for cross-core synchronization.
+- **Mutex vs. Spinlock**: Use `k_mutex` for long synchronization inside threads on a single core, but **must** use `k_spinlock` for cross-core synchronization. See **[kernel-services](../../kernel-services/SKILL.md)** for detailed synchronization patterns.
 - **Protocol Standardization**: Use RPMsg if you need a standard protocol; use raw shared memory + IPM signaling if you need absolute minimum latency.
