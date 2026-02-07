@@ -40,7 +40,7 @@ void poll_sensor(void) {
 
 ## Professional Patterns (Hardware Engineering)
 - **Safe GPIO**: Always use `gpio_dt_spec` to ensure polarity and pin number are automatically handled by the driver.
-- **Background Sampling**: Never poll sensors in high-priority threads; use a background work queue.
+- **Background Sampling**: Never poll sensors in high-priority threads; use a background work queue. See **[Work Queues](../kernel-services/references/settings_workqueue.md)** in the kernel-services skill.
 - **Deferred Pinctrl**: Define pin states in a shared `.dtsi` to simplify multi-revision hardware support.
 
 ## Resources

@@ -18,13 +18,31 @@ struct battery_msg {
     bool charging;
 };
 
-ZBUS_CHAN_DEFINE(batt_chan, struct battery_msg, NULL, NULL, ZBUS_OBSERVERS_EMPTY, ZBUS_CHAN_DEFAULTS);
+// Define channel WITH observers registered
+ZBUS_CHAN_DEFINE(batt_chan, 
+                 struct battery_msg, 
+                 NULL, 
+                 NULL, 
+                 ZBUS_OBSERVERS(my_sub, my_listener),  // Register observers here
+                 ZBUS_CHAN_DEFAULTS);
+
+// Or define without observers initially
+ZBUS_CHAN_DEFINE(sensor_chan, struct sensor_msg, NULL, NULL, ZBUS_OBSERVERS_EMPTY, ZBUS_CHAN_DEFAULTS);
 ```
 
 ## Publishing Data
 ```c
 struct battery_msg msg = { .percentage = 85, .charging = false };
 zbus_chan_pub(&batt_chan, &msg, K_MSEC(100));
+```
+
+## Notifying Without Data
+For event-only channels (no data payload):
+```c
+ZBUS_CHAN_DEFINE(reset_event, int, NULL, NULL, ZBUS_OBSERVERS(...), ZBUS_CHAN_DEFAULTS);
+
+// Trigger event
+zbus_chan_notify(&reset_event, K_NO_WAIT);
 ```
 
 ## Subscribing to Data
@@ -58,3 +76,10 @@ ZBUS_LISTENER_DEFINE(my_listener, batt_callback);
 - **Decouple Modules**: Modules should only depend on shared channel definitions, not on each other's internals.
 - **Use for Event-Driven Logic**: Perfect for sensor updates, state changes, or UI notifications.
 - **Avoid Over-Broadcasting**: Only define observers that actually need the data to minimize overhead.
+
+## Enabling Zbus
+```kconfig
+CONFIG_ZBUS=y
+CONFIG_ZBUS_MSG_SUBSCRIBER=y  # For message queue subscribers
+CONFIG_ZBUS_RUNTIME_OBSERVERS=y  # For dynamic observer registration
+```

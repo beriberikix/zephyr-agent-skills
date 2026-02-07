@@ -58,6 +58,25 @@ void toggle(void) {
 }
 ```
 
+### 3. GPIO Interrupts
+```c
+static struct gpio_callback button_cb;
+
+void button_pressed(const struct device *dev, struct gpio_callback *cb, uint32_t pins) {
+    // Handle button press
+}
+
+void setup_button(void) {
+    const struct gpio_dt_spec button = GPIO_DT_SPEC_GET(DT_ALIAS(sw0), gpios);
+    
+    gpio_pin_configure_dt(&button, GPIO_INPUT);
+    gpio_pin_interrupt_configure_dt(&button, GPIO_INT_EDGE_TO_ACTIVE);
+    
+    gpio_init_callback(&button_cb, button_pressed, BIT(button.pin));
+    gpio_add_callback(button.port, &button_cb);
+}
+```
+
 ## Tips for Success
 - **Use `dt_spec`**: The `_dt` variants of the GPIO functions are much safer and handle polarity automatically based on Devicetree bits.
 - **Check Schematics**: Always verify `GPIO_ACTIVE_LOW` vs `GPIO_ACTIVE_HIGH` against your hardware design.

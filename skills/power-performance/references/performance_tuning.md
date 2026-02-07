@@ -11,6 +11,7 @@ void __attribute__((section(".ramfunc"))) critical_fn(void) {
     // Fast execution
 }
 ```
+**Note**: The `.ramfunc` section must be defined in your linker script. Some boards use `__ramfunc` as a pre-defined macro. Check your board's linker script in `boards/<arch>/<vendor>/<board>/`.
 
 ### 2. Using the Relocation Script
 Define relocation rules in a `relocation.conf` file.

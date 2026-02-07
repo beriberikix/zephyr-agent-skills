@@ -35,6 +35,11 @@ void setup_q(void) {
 }
 ```
 
+#### Choosing Priority
+- **Higher than main thread**: For time-sensitive background work (e.g., sensor sampling with tight deadlines)
+- **Lower than main thread**: For non-critical tasks (e.g., logging, statistics)
+- **Typical**: `CONFIG_SYSTEM_WORKQUEUE_PRIORITY - 1` (slightly lower than system work queue)
+
 ## Settings Subsystem
 Store and retrieve persistent data across reboots.
 

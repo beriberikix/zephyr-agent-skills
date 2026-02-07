@@ -42,6 +42,7 @@ zbus_chan_pub(&sensor_data_chan, &msg, K_NO_WAIT);
 - **Modularity**: Use Zbus as the backbone for inter-module communication.
 - **Predictability**: Use SMF to define clear lifecycle states for each module (e.g., Uninitialized -> Ready -> Active -> Error).
 - **Responsiveness**: Use custom work queues for sensor data ingestion to keep the main thread responsive for cloud communication.
+- **Sensor Integration**: For sensor data ingestion patterns, see the **[hardware-io](../hardware-io/SKILL.md)** skill.
 
 ## Resources
 

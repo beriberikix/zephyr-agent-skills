@@ -39,6 +39,7 @@ void sleep_spi(void) {
 - **Aggressive Suspend**: Transition peripherals to low-power states as soon as their transaction is complete.
 - **ITCM/DTCM**: Use Tightly Coupled Memory for time-critical control loops to avoid Flash latency.
 - **Runtime Monitoring**: Always enable the thread analyzer during development to find the "RAM floor" for your application.
+- **Coordinated Sleep**: To coordinate sleep across modules, see **[Zbus](../kernel-services/references/zbus.md)** for event-driven power management.
 
 ## Resources
 

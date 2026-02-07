@@ -26,8 +26,16 @@ if (sensor_sample_fetch(dev) == 0) {
 ### 2. Read & Decode API (Modern)
 The newer, more efficient streaming-oriented API. Preferred for high-frequency or multi-sensor data.
 ```c
-struct sensor_decode_context ctx;
-sensor_read(dev, &ctx, ...);
+// Note: API is still evolving in Zephyr 3.4+
+// Check current documentation for your Zephyr version
+uint8_t buffer[32];
+struct sensor_decode_context ctx = {
+    .buffer = buffer,
+    .buffer_length = sizeof(buffer),
+};
+
+sensor_read(dev, &ctx, SENSOR_CHAN_ALL);
+// Decode values from buffer using sensor-specific decode functions
 ```
 
 ## Professional Patterns (from Golioth)

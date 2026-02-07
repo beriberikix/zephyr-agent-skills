@@ -55,12 +55,19 @@ HSMs allow you to define parent states, reducing duplication for common behavior
 
 ```c
 static const struct smf_state states[] = {
-    [PARENT_STATE] = SMF_CREATE_STATE(entry_fn, run_fn, exit_fn),
-    [CHILD_STATE] = SMF_CREATE_STATE_CHLD(entry_fn, run_fn, exit_fn, &states[PARENT_STATE]),
+    [PARENT_STATE] = SMF_CREATE_STATE(entry_fn, run_fn, exit_fn, NULL),
+    [CHILD_STATE] = SMF_CREATE_STATE(entry_fn, run_fn, exit_fn, &states[PARENT_STATE]),
 };
 ```
+The parent state is specified as the 4th parameter.
 
 ## Professional Patterns (from Golioth)
 - **Combine with Zbus**: Trigger state transitions based on Zbus events.
 - **Modularization**: Each major feature (Network, Cloud, FOTA) often gets its own SMF-based module.
 - **Clean Transitions**: Always use entry/exit functions to manage hardware state or memory instead of putting cleanup in the run function.
+
+## Enabling SMF
+```kconfig
+CONFIG_SMF=y
+CONFIG_SMF_ANCESTOR_SUPPORT=y  # For hierarchical state machines
+```

@@ -9,6 +9,13 @@ States are defined in Devicetree and managed by the PM subsystem.
 - **Suspend / Deep Sleep**: Core and some peripherals are powered down. RAM is typically retained.
 - **Off**: Complete power down. Requires a wake-up source or reset.
 
+## Enabling Power Management
+```kconfig
+CONFIG_PM=y
+CONFIG_PM_DEVICE=y
+CONFIG_PM_DEVICE_RUNTIME=y  # For runtime device PM
+```
+
 ## Residency & States
 Define states in your board's Devicetree.
 ```dts
