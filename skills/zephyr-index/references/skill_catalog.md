@@ -43,7 +43,7 @@ This catalog maps common Zephyr RTOS development tasks to the appropriate **Agen
 
 ---
 
-## Phase 4: Production & Specialized *(Coming Soon)*
+## Phase 4: Production & Specialized 
 
 | Skill | Triggers / Use Cases |
 | :--- | :--- |
