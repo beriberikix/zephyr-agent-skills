@@ -21,13 +21,13 @@ This catalog maps common Zephyr RTOS development tasks to the appropriate **Agen
 
 ---
 
-## Phase 2: Common Features *(Coming Soon)*
+## Phase 2: Common Features
 
 | Skill | Triggers / Use Cases |
 | :--- | :--- |
-| **kernel-services** | Zbus, SMF (State Machine), Work Queues, IRQs, Settings, Events. |
-| **hardware-io** | Pinctrl, GPIO, Sensors, DMA, ADC, DAC, Input subsystem. |
-| **power-performance** | Power management (PM), performance tuning, code/data relocation. |
+| **[kernel-services](file:///Users/jberi/code/zephyr-agent-skills/skills/kernel-services/SKILL.md)** | Zbus, SMF (State Machine), Work Queues, IRQs, Settings, Events. |
+| **[hardware-io](file:///Users/jberi/code/zephyr-agent-skills/skills/hardware-io/SKILL.md)** | Pinctrl, GPIO, Sensors, DMA, ADC, DAC, Input subsystem. |
+| **[power-performance](file:///Users/jberi/code/zephyr-agent-skills/skills/power-performance/SKILL.md)** | Power management (PM), performance tuning, code/data relocation. |
 
 ---
 
