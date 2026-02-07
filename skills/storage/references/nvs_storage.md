@@ -31,12 +31,19 @@ void init_storage(void) {
     fs.flash_device = DEVICE_DT_GET(DT_CHOSEN(zephyr_flash_controller));
     fs.offset = FIXED_PARTITION_OFFSET(storage_partition);
     
+    // Note: The storage_partition label must match a partition defined in your
+    // board's Devicetree. See flash_management.md for partition configuration.
+    
     struct flash_pages_info info;
     flash_get_page_info_by_offs(fs.flash_device, fs.offset, &info);
     fs.sector_size = info.size;
     fs.sector_count = 3; // Number of sectors allocated
 
-    nvs_mount(&fs);
+    int rc = nvs_mount(&fs);
+    if (rc) {
+        printk("NVS mount failed: %d\n", rc);
+        return;
+    }
 }
 ```
 

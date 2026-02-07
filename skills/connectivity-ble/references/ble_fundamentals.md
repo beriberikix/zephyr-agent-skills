@@ -54,7 +54,37 @@ BT_CONN_CB_DEFINE(conn_callbacks) = {
 };
 ```
 
+## Security (Pairing & Bonding)
+Register authentication callbacks to handle pairing requests.
+
+```c
+static void auth_passkey_display(struct bt_conn *conn, unsigned int passkey) {
+    printk("Passkey: %06u\n", passkey);
+}
+
+static void auth_cancel(struct bt_conn *conn) {
+    printk("Pairing cancelled\n");
+}
+
+static const struct bt_conn_auth_cb auth_callbacks = {
+    .passkey_display = auth_passkey_display,
+    .cancel = auth_cancel,
+};
+
+void init_security(void) {
+    bt_conn_auth_cb_register(&auth_callbacks);
+}
+```
+
 ## Best Practices
 - **UUID Selection**: Use standard 16-bit UUIDs for adopted services, and 128-bit random UUIDs for custom services.
 - **Payload Minimization**: Keep advertising names short to fit in the 31-byte limit.
 - **Security by Design**: Implement pairing and bonding if data privacy or integrity is required.
+
+## Enabling the BLE Stack
+```kconfig
+CONFIG_BT=y
+CONFIG_BT_PERIPHERAL=y
+CONFIG_BT_DEVICE_NAME="Zephyr Device"
+CONFIG_BT_MAX_CONN=1
+```

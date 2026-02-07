@@ -32,6 +32,19 @@ void usb_to_can_thread(void) {
 }
 ```
 
+## CAN Controller Basics
+```kconfig
+CONFIG_CAN=y
+CONFIG_CAN_MAX_FILTER=5
+CONFIG_CAN_LOG_LEVEL_DBG=y  # For development
+```
+
+For specific CAN controllers:
+```kconfig
+CONFIG_CAN_STM32=y  # For STM32 series
+CONFIG_CAN_NATIVE_POSIX_LINUX=y  # For native_sim testing
+```
+
 ## Kconfig Configuration
 ```kconfig
 CONFIG_USB_DEVICE_STACK=y
@@ -41,7 +54,7 @@ CONFIG_CAN_MAX_FILTER=5
 ```
 
 ## Integration Patterns
-- **Zbus Integration**: Use Zbus to distribute CAN messages to multiple internal application modules (e.g., telemetry, local logging, and the USB bridge).
+- **Zbus Integration**: Use Zbus to distribute CAN messages to multiple internal application modules (e.g., telemetry, local logging, and the USB bridge). For Zbus integration patterns, see **[Zbus](../../kernel-services/references/zbus.md)** in the kernel-services skill.
 - **Filtering**: Use hardware CAN filters to only pass relevant messages to the USB interface, reducing CPU load.
 - **Status LEDs**: Mirror CAN bus activity or errors to LEDs using the GPIO API to provide immediate visual feedback.
 

@@ -15,6 +15,8 @@ Use a buffer or a Zbus channel to hold data until ready to send.
 ### 2. The Idle Timer
 Use a `k_work_delayable` to trigger transmission after a period of inactivity.
 
+For more details on work queues, see **[Work Queues](../../kernel-services/references/settings_workqueue.md)** in the kernel-services skill.
+
 ```c
 #include <zephyr/kernel.h>
 
@@ -34,6 +36,11 @@ void send_idle_handler(struct k_work *work) {
 
 void init_pattern(void) {
     k_work_init_delayable(&send_idle_work, send_idle_handler);
+}
+
+void transmit_bundled_data(void) {
+    // Example: Send accumulated data via BLE notification
+    // bt_gatt_notify(NULL, &attr, data, len);
 }
 ```
 

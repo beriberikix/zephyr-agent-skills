@@ -3,7 +3,7 @@
 Twister is the automation tool that scans for tests, builds them for multiple platforms, and executes them (either in simulation or on real hardware).
 
 ## Core Concepts
-- **`testplan.yaml`**: Defines how Twister should discover and build your tests.
+- **`testcase.yaml`**: Defines how Twister should discover and build your tests.
 - **Scenarios**: Specific configurations of a test (e.g., building with different Kconfigs).
 - **HIL (Hardware-In-The-Loop)**: Running tests on physical boards connected to the host.
 
@@ -46,6 +46,19 @@ twister --device-testing --hardware-map device_map.yaml
 Twister generates comprehensive reports in XML and JSON formats, ideal for CI/CD integration.
 - `twister-out/twister.json`: Summary of all tests.
 - `twister-out/testplan.json`: Detailed report of build/run status.
+
+### 4. CI/CD Integration (GitHub Actions)
+```yaml
+- name: Run Twister Tests
+  run: |
+    ./scripts/twister -p native_sim --inline-logs
+    
+- name: Upload Test Results
+  uses: actions/upload-artifact@v3
+  with:
+    name: twister-results
+    path: twister-out/twister.json
+```
 
 ## Professional Insight
 Use the **test quarantine** feature for flaky tests in large repositories. Mark unstable tests in a `quarantine.yaml` file to prevent them from breaking the entire CI pipeline while they are being investigated.

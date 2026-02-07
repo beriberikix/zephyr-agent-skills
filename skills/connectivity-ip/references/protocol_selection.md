@@ -12,6 +12,11 @@ Choosing the right application-layer protocol is critical for balancing power, b
 | **Device Mgmt** | Built-in | None (manual) | None (manual) |
 | **Power Efficiency**| High | High | Moderate |
 
+## Quick Decision Guide
+- **Need device management (FOTA, config)?** → LwM2M
+- **RESTful API over constrained network?** → CoAP
+- **Simple pub/sub with cloud provider?** → MQTT
+
 ## 1. LwM2M (Lightweight M2M)
 Best for: Professional IoT fleets requiring standardized device management (FOTA, configuration, monitoring).
 - **Pros**: Standardized data model, excellent for low-power (UDP), built-in security (DTLS).

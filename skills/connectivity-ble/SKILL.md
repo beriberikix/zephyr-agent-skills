@@ -25,6 +25,10 @@ Fine-tune intervals and connection parameters for maximum battery life.
 - **Key Tools**: `bt_le_conn_param`, Advertising intervals, PHY selection.
 
 ## Quick Start (Advertising)
+```kconfig
+CONFIG_BT=y
+CONFIG_BT_PERIPHERAL=y
+```
 ```c
 #include <zephyr/bluetooth/bluetooth.h>
 
