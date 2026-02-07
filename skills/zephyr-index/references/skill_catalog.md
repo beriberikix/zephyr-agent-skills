@@ -31,15 +31,15 @@ This catalog maps common Zephyr RTOS development tasks to the appropriate **Agen
 
 ---
 
-## Phase 3: Advanced Features *(Coming Soon)*
+## Phase 3: Connectivity & Advanced Workflows
 
 | Skill | Triggers / Use Cases |
 | :--- | :--- |
-| **connectivity-ble** | Bluetooth Low Energy (GAP, GATT, pairing, bonding). |
-| **connectivity-ip** | IPv4/IPv6 sockets, LwM2M, CoAP, MQTT. |
-| **connectivity-usb-can** | USB Device classes (CDC-ACM, HID, etc.), CAN and CAN-FD. |
-| **storage** | Flash storage (NVS, FCB), filesystems (LittleFS), partitions. |
-| **testing-debugging** | Twister, Ztest, Thread Analyzer, Tracing, GDB/Coredump. |
+| **[connectivity-ble](file:///Users/jberi/code/zephyr-agent-skills/skills/connectivity-ble/SKILL.md)** | Bluetooth Low Energy (GAP, GATT, pairing), Send-When-Idle pattern. |
+| **[connectivity-ip](file:///Users/jberi/code/zephyr-agent-skills/skills/connectivity-ip/SKILL.md)** | IPv4/IPv6, LwM2M, CoAP, MQTT, modular IP stack configuration. |
+| **[connectivity-usb-can](file:///Users/jberi/code/zephyr-agent-skills/skills/connectivity-usb-can/SKILL.md)** | USB Device classes (CDC ACM, HID), CAN bus diagnostics and adapters. |
+| **[storage](file:///Users/jberi/code/zephyr-agent-skills/skills/storage/SKILL.md)** | Flash storage (NVS), partitions, flash layout management. |
+| **[testing-debugging](file:///Users/jberi/code/zephyr-agent-skills/skills/testing-debugging/SKILL.md)** | Twister test suites, Ztest frameworks, Tracing, Thread Analyzer. |
 
 ---
 
