@@ -47,6 +47,10 @@ west build -b native_sim samples/hello_world
 
 - **[find_modules.sh](scripts/find_modules.sh)**: Scan your `build/` directory to automatically identify which modules you should add to your manifest's `name-allowlist`.
 
+## Examples & Templates
+
+- **[west_manifest_template.yml](assets/west_manifest_template.yml)**: Minimal starter manifest for west workspaces.
+
 ## Resources
 
 - **[References](references/)**:
@@ -55,3 +59,5 @@ west build -b native_sim samples/hello_world
   - `cmake.md`: Sysbuild and CMake API integration.
 - **[Scripts](scripts/)**:
   - `find_modules.sh`: Automated allow-list discovery utility.
+- **[Assets](assets/)**:
+  - `west_manifest_template.yml`: Base west manifest template.

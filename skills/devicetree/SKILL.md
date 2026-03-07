@@ -47,6 +47,12 @@ Deleting and redefining nodes/properties for product variants.
 - `build/zephyr/zephyr.dts`: Inspect the FINAL resolved devicetree after all overlays are applied.
 - `build/zephyr/include/generated/zephyr/devicetree_generated.h`: Inspect generated DT macros consumed by C code.
 
+## Automation Tools
+- **[overlay_include_check.py](scripts/overlay_include_check.py)**: Run basic sanity checks on `.overlay` files.
+
+## Examples & Templates
+- **[app_overlay_template.overlay](assets/app_overlay_template.overlay)**: Starter overlay with common node status changes.
+
 ## Validation Checklist
 - [ ] Overlay compiles with no DTS syntax errors during `west build`.
 - [ ] Expected node status/properties are present in `build/zephyr/zephyr.dts`.
@@ -59,3 +65,7 @@ Deleting and redefining nodes/properties for product variants.
   - `dt_syntax.md`: Core syntax and properties.
   - `dt_bindings.md`: Binding definitions and compatible mapping.
   - `dt_overlays.md`: Overlays, HWMv2, and deletion patterns.
+- **[Scripts](scripts/)**:
+  - `overlay_include_check.py`: Overlay sanity checker.
+- **[Assets](assets/)**:
+  - `app_overlay_template.overlay`: Baseline overlay template.

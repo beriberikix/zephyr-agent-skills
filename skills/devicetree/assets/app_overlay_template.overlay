@@ -1,0 +1,15 @@
+/* Starter app.overlay template */
+
+&i2c1 {
+    status = "okay";
+};
+
+&uart0 {
+    status = "disabled";
+};
+
+/ {
+    aliases {
+        temp0 = &sensor0;
+    };
+};

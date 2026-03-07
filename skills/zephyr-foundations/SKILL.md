@@ -47,6 +47,9 @@ int sensor_read_checked(const struct device *dev)
 - [ ] Error paths return standard negative `errno` codes.
 - [ ] Defensive guards exist for null pointers, bounds, and device readiness checks.
 
+## Automation Tools
+- **[errno_return_check.py](scripts/errno_return_check.py)**: Detect likely non-negative `errno` return statements in C/C++ code.
+
 ## Examples & Templates
 
 - **[template_driver.c](assets/foundation_examples/template_driver.c)**: A complete skeleton showing how to combine DT macros, mutexes, and config-data separation.
@@ -58,5 +61,7 @@ int sensor_read_checked(const struct device *dev)
   - `concurrency.md`: Mutexes, Semaphores, Spinlocks, and ISR safety.
   - `devicetree_basics.md`: Devicetree syntax and overlay patterns.
   - `error_handling.md`: Error codes and defensive programming.
+- **[Scripts](scripts/)**:
+  - `errno_return_check.py`: Return-code sign checker.
 - **[Assets](assets/)**:
   - `foundation_examples/`: Working code templates for drivers and logic.

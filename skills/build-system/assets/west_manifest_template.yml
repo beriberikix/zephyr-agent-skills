@@ -1,0 +1,14 @@
+# Minimal west manifest template for Zephyr projects.
+
+manifest:
+  version: "0.13"
+  remotes:
+    - name: zephyrproject-rtos
+      url-base: https://github.com/zephyrproject-rtos
+  projects:
+    - name: zephyr
+      remote: zephyrproject-rtos
+      revision: main
+      import: true
+  self:
+    path: app

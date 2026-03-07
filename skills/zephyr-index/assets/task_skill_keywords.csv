@@ -1,0 +1,10 @@
+keyword,skill
+ble,connectivity-ble
+coap,connectivity-ip
+mqtt,connectivity-ip
+devicetree,devicetree
+board,board-bringup
+mcuboot,security-updates
+twister,testing-debugging
+zbus,kernel-services
+sensor,hardware-io

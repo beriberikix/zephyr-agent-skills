@@ -43,6 +43,12 @@ Networking and communication: BLE, IP (MQTT/CoAP/LwM2M), USB, and CAN.
 Taking your product to the finish line: Security, OTA Updates, Testing, and Multicore.
 - **Key Skills**: `security-updates`, `testing-debugging`, `multicore`.
 
+## Automation Tools
+- **[task_skill_match.py](scripts/task_skill_match.py)**: Match task text to likely skills using keyword maps.
+
+## Examples & Templates
+- **[task_skill_keywords.csv](assets/task_skill_keywords.csv)**: Starter keyword-to-skill mapping for quick routing.
+
 ## Validation Checklist
 - [ ] At least one representative task in each phase maps cleanly through `quick_reference.md`.
 - [ ] Decision tree path selected for a task resolves to an existing skill file.
@@ -55,3 +61,7 @@ Taking your product to the finish line: Security, OTA Updates, Testing, and Mult
   - `skill_catalog.md`: Complete list of all skills and their triggers.
   - `decision_tree.md`: Visual guide for skill selection.
   - `quick_reference.md`: Task-to-skill mapping for common queries.
+- **[Scripts](scripts/)**:
+  - `task_skill_match.py`: Keyword router for skill discovery.
+- **[Assets](assets/)**:
+  - `task_skill_keywords.csv`: Starter keyword map for routing.
