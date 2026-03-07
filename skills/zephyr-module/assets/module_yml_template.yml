@@ -1,0 +1,10 @@
+# Minimal zephyr/module.yml template.
+
+name: my-zephyr-module
+build:
+  cmake: .
+  kconfig: zephyr/Kconfig
+
+# Optional: declare integration dependencies by module name.
+# depends:
+#   - hal_nordic

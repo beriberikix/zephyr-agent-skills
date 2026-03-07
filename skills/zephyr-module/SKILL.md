@@ -37,8 +37,18 @@ build:
 - [ ] Module Kconfig options appear and can be enabled in build configuration.
 - [ ] Module sources are compiled and linked into the target application as expected.
 
+## Automation Tools
+- **[module_manifest_check.py](scripts/module_manifest_check.py)**: Validate required `build.cmake` and `build.kconfig` fields in `module.yml`.
+
+## Examples & Templates
+- **[module_yml_template.yml](assets/module_yml_template.yml)**: Starter module manifest for out-of-tree integration.
+
 ## Resources
 
 - **[References](references/)**:
   - `module_definition.md`: Structure and module.yml specification.
   - `west_integration.md`: Manifest configuration and discovery tools.
+- **[Scripts](scripts/)**:
+  - `module_manifest_check.py`: Module manifest consistency checker.
+- **[Assets](assets/)**:
+  - `module_yml_template.yml`: Minimal `zephyr/module.yml` template.

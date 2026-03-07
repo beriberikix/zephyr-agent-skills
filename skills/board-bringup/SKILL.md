@@ -41,6 +41,12 @@ boards/<vendor>/<board>/
 - [ ] DTS and defconfig settings are applied in the generated build output.
 - [ ] Revision-specific overlays are selected correctly when building a non-default revision.
 
+## Automation Tools
+- **[board_yaml_lint.py](scripts/board_yaml_lint.py)**: Validate basic `board.yml` structure and naming conventions.
+
+## Examples & Templates
+- **[board_yml_template.yml](assets/board_yml_template.yml)**: Starter `board.yml` for HWMv2 board metadata.
+
 ## Best Practices
 - **Use `_common.dtsi`**: Share devicetree definitions across all board revisions.
 - **Follow HWMv2**: Avoid the legacy board structure (`Kconfig.defconfig`, etc.).
@@ -51,3 +57,7 @@ boards/<vendor>/<board>/
 - **[References](references/)**:
   - `hwmv2_structure.md`: Directory layout and `board.yml`.
   - `board_files.md`: Kconfig, defconfig, and CMake configuration.
+- **[Scripts](scripts/)**:
+  - `board_yaml_lint.py`: Structural checker for board metadata.
+- **[Assets](assets/)**:
+  - `board_yml_template.yml`: Minimal board metadata template.
