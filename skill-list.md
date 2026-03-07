@@ -3,12 +3,20 @@
 **Comprehensive Skill List for Embedded Development**
 
 * **Version:** 1.8  
-* **Last Updated:** February 7, 2026  
+* **Last Updated:** March 7, 2026  
 * **Target Platform:** Zephyr RTOS 4.3.0+
 
 ## **Overview**
 
 This document provides a complete catalog of Agent Skills for Zephyr RTOS development.
+
+## **Quality Governance**
+
+* **Review Cadence:** Run repository skill-quality validation at least monthly and on every pull request.
+* **Required Skill Sections:** Each `skills/*/SKILL.md` must include both `## Quick Start` and `## Validation Checklist`.
+* **Linking Policy:** Cross-skill links in `SKILL.md` should point to sibling `SKILL.md` entry points, not directly to another skill's `references/`, `assets/`, or `scripts/` paths.
+* **Catalog/Marketplace Sync:** `skills/zephyr-index/references/skill_catalog.md` and `.claude-plugin/marketplace.json` must remain consistent with `skills/*` directories.
+* **Release Freshness:** Re-review skill content within two weeks of each Zephyr release and update any stale APIs, Kconfig symbols, or build guidance.
 
 ## **Tier 0: Embedded Foundations (Zephyr Context)**
 

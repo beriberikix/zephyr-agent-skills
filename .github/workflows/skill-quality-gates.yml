@@ -1,0 +1,32 @@
+name: Skill Quality Gates
+
+on:
+  pull_request:
+  push:
+    branches:
+      - main
+
+jobs:
+  validate-skills:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Setup Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+
+      - name: Install Validator Dependency
+        run: python -m pip install --upgrade pip pyyaml
+
+      - name: Regenerate Marketplace File
+        run: python scripts/generate_marketplace.py
+
+      - name: Ensure Marketplace Is Committed
+        run: git diff --exit-code .claude-plugin/marketplace.json
+
+      - name: Run Skill Quality Validation
+        run: python scripts/validate_skills.py
