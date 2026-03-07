@@ -62,3 +62,33 @@ void init_modbus_server(void) {
 - **Physical Layer**: Most industrial Modbus uses RS-485. Ensure your board has an RS-485 transceiver and you handle the DE/RE signals (often via the `uart-rs485` devicetree property).
 - **Timeouts**: Modbus RTU relies on 3.5-character time silences to delimit frames. Use a stable clock source for the UART peripheral.
 - **Isolation**: Industrial environments often require galvanic isolation for the serial lines to prevent ground loops.
+
+## Validation Workflow
+
+Use this quick sequence before system integration:
+
+1. **Static map validation**
+     - Keep register allocations in a CSV and run:
+     - `python ../scripts/modbus_register_lint.py --csv ../assets/modbus_register_map_template.csv`
+2. **Frame-level sanity check**
+     - Verify slave node address, baud, parity, and stop bits are exactly matched on both ends.
+     - Confirm function-code behavior for at least one read and one write path.
+3. **Timing check**
+     - Confirm inter-frame silent interval is not violated under peak polling load.
+4. **Error-path check**
+     - Validate exception responses for invalid register addresses and unsupported function codes.
+
+## Troubleshooting Patterns
+
+- **No response at all**:
+    - Check RS-485 transceiver DE/RE direction control and wiring polarity (A/B lines).
+    - Confirm node address and UART parity settings.
+- **Intermittent CRC/framing errors**:
+    - Lower baud rate and inspect grounding/isolation.
+    - Verify cable length and termination/biasing for the bus segment.
+- **Wrong data from valid frames**:
+    - Review register addressing convention (`0-based` vs `40001` style in tooling).
+    - Confirm endianness/word-order assumptions for multi-register values.
+- **System stalls during polling**:
+    - Move Modbus processing to work queue/thread context and avoid long blocking handlers.
+    - Add watchdog-aware timeout and retry limits for external bus faults.

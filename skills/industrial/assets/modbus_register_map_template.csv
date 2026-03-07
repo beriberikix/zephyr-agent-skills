@@ -1,0 +1,8 @@
+table,address,name,size,units,access,notes
+holding_register,0,fw_version_major,1,,R,Application firmware major version
+holding_register,1,fw_version_minor,1,,R,Application firmware minor version
+holding_register,10,setpoint_temp_c_x10,1,0.1C,RW,Temperature setpoint in deci-degrees C
+input_register,100,temp_c_x10,1,0.1C,R,Measured temperature in deci-degrees C
+input_register,101,humidity_rh_x10,1,0.1%RH,R,Measured humidity in tenths of percent
+coil,200,pump_enable,1,,RW,Enable output relay for pump
+discrete_input,300,pump_fault,1,,R,Digital fault input from pump controller
