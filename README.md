@@ -61,6 +61,28 @@ The master index for all skills is located within the `zephyr-index` skill:
 *   **Learning**: Treat each skill as a focused tutorial. The `references/` folder in each skill contains "cheat sheets" for specific topics.
 *   **Best Practices**: The content emphasizes professional, production-ready patterns over simple "Hello World" examples.
 
+## 🧩 Claude Code Plugin
+
+This repository can be added as a plugin marketplace in Claude Code.
+
+### Installation
+
+1.  **Add the Marketplace**:
+    ```bash
+    claude plugin marketplace add beriberikix/zephyr-agent-skills
+    ```
+    *(Or `claude plugin marketplace add .` if working in a local clone)*
+
+2.  **Install All Skills**:
+    ```bash
+    claude plugin install zephyr-skills@zephyr-agent-skills
+    ```
+
+3.  **Install Specific Skills**:
+    ```bash
+    claude plugin install connectivity-ble@zephyr-agent-skills
+    ```
+
 ## 🤝 Contributing
 
 Each skill is a self-contained directory with the following structure:

@@ -1,0 +1,28 @@
+{
+  "name": "zephyr-agent-skills",
+  "owner": "beriberikix",
+  "plugins": {
+    "zephyr-skills": "..",
+    "board-bringup": "../skills/board-bringup",
+    "build-system": "../skills/build-system",
+    "connectivity-ble": "../skills/connectivity-ble",
+    "connectivity-ip": "../skills/connectivity-ip",
+    "connectivity-usb-can": "../skills/connectivity-usb-can",
+    "devicetree": "../skills/devicetree",
+    "hardware-io": "../skills/hardware-io",
+    "industrial": "../skills/industrial",
+    "iot-protocols": "../skills/iot-protocols",
+    "kernel-basics": "../skills/kernel-basics",
+    "kernel-services": "../skills/kernel-services",
+    "multicore": "../skills/multicore",
+    "native-sim": "../skills/native-sim",
+    "power-performance": "../skills/power-performance",
+    "security-updates": "../skills/security-updates",
+    "specialized": "../skills/specialized",
+    "storage": "../skills/storage",
+    "testing-debugging": "../skills/testing-debugging",
+    "zephyr-foundations": "../skills/zephyr-foundations",
+    "zephyr-index": "../skills/zephyr-index",
+    "zephyr-module": "../skills/zephyr-module"
+  }
+}
