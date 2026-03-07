@@ -49,6 +49,12 @@ west build -b nucleo_f401re --sysbuild samples/basic/blinky
 - **Heartbeat Confirmation**: Only confirm a new image after the application has successfully connected to its cloud backend.
 - **Version Integrity**: Enable version monotonicity to prevent accidental or malicious firmware downgrades.
 
+## Validation Checklist
+- [ ] Signed image verifies at boot and unsigned/tampered image is rejected.
+- [ ] DFU flow completes end-to-end and boots into the new slot.
+- [ ] Rollback behavior triggers correctly when image confirmation is withheld.
+- [ ] Key handling and version policy prevent downgrade and test-key usage in production configs.
+
 ## Resources
 
 - **[References](references/)**:

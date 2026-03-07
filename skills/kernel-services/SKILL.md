@@ -44,6 +44,12 @@ zbus_chan_pub(&sensor_data_chan, &msg, K_NO_WAIT);
 - **Responsiveness**: Use custom work queues for sensor data ingestion to keep the main thread responsive for cloud communication.
 - **Sensor Integration**: For sensor data ingestion patterns, see the **[hardware-io](../hardware-io/SKILL.md)** skill.
 
+## Validation Checklist
+- [ ] Zbus publishers and subscribers exchange messages without deadlock or missed updates.
+- [ ] SMF transitions follow expected state graph under normal and error conditions.
+- [ ] Deferred work executes on intended queue context with bounded execution time.
+- [ ] Settings values persist across reboot and reload successfully at startup.
+
 ## Resources
 
 - **[References](references/)**:

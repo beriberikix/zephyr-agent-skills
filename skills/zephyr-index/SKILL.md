@@ -43,6 +43,12 @@ Networking and communication: BLE, IP (MQTT/CoAP/LwM2M), USB, and CAN.
 Taking your product to the finish line: Security, OTA Updates, Testing, and Multicore.
 - **Key Skills**: `security-updates`, `testing-debugging`, `multicore`.
 
+## Validation Checklist
+- [ ] At least one representative task in each phase maps cleanly through `quick_reference.md`.
+- [ ] Decision tree path selected for a task resolves to an existing skill file.
+- [ ] Skill catalog entries match current directories under `skills/*`.
+- [ ] Navigation links in this index resolve without broken relative paths.
+
 ## Resources
 
 - **[References](references/)**:

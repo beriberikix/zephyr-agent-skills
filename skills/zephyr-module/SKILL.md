@@ -31,6 +31,12 @@ build:
   kconfig: zephyr/Kconfig
 ```
 
+## Validation Checklist
+- [ ] `west update` fetches module source from manifest without conflicts.
+- [ ] `west build -t list_modules` shows the module as discovered.
+- [ ] Module Kconfig options appear and can be enabled in build configuration.
+- [ ] Module sources are compiled and linked into the target application as expected.
+
 ## Resources
 
 - **[References](references/)**:

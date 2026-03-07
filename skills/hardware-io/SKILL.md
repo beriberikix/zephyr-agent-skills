@@ -43,6 +43,12 @@ void poll_sensor(void) {
 - **Background Sampling**: Never poll sensors in high-priority threads; use a background work queue. See **[Work Queues](../kernel-services/references/settings_workqueue.md)** in the kernel-services skill.
 - **Deferred Pinctrl**: Define pin states in a shared `.dtsi` to simplify multi-revision hardware support.
 
+## Validation Checklist
+- [ ] Sensor device nodes resolve correctly and `DEVICE_DT_GET(...)` targets are ready at runtime.
+- [ ] GPIO and pinctrl states match the intended board schematic and polarity rules.
+- [ ] Sensor sampling path returns stable values with expected units/scaling.
+- [ ] Background acquisition does not block high-priority or interrupt-critical code paths.
+
 ## Resources
 
 - **[References](references/)**:

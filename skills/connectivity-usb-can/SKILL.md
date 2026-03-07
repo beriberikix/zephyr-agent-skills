@@ -38,6 +38,12 @@ void main(void) {
 - **Hardware Filtering**: Rely on the CAN controller's hardware filters to minimize CPU overhead from irrelevant bus traffic.
 - **Thread Safety**: Use Zephyr's kernel IPCs (`k_msgq`, `k_fifo`) to safely move data between high-priority CAN interrupts and the USB processing thread.
 
+## Validation Checklist
+- [ ] USB enumeration succeeds and the host sees the expected class interface.
+- [ ] CAN frames can be transmitted and received on a known-good test bus.
+- [ ] Bridge buffering prevents frame loss under burst traffic conditions.
+- [ ] Protocol framing between USB endpoint and CAN payload is decoded consistently on both sides.
+
 ## Resources
 
 - **[References](references/)**:

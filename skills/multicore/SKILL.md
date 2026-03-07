@@ -48,6 +48,12 @@ k_spin_unlock(&lock, key);
 - **Core Isolation**: Pin high-frequency interrupts (e.g., motor control) to Core 1 and keep the main application on Core 0 to prevent jitter.
 - **Zero-Copy Transfers**: Use shared memory regions for large data (video/audio) and only pass meta-data via IPC channels to minimize overhead.
 
+## Validation Checklist
+- [ ] SMP builds run with expected CPU count and no cross-core race regressions.
+- [ ] OpenAMP/RPMsg endpoint exchange passes bidirectional message tests.
+- [ ] IPC latency and throughput remain within target budget under load.
+- [ ] LLEXT module load/unload path resolves symbols and handles failure cases safely.
+
 ## Resources
 
 - **[References](references/)**:

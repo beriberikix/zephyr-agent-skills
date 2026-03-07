@@ -36,6 +36,12 @@ west build -b native_sim samples/hello_world
 west debug
 ```
 
+## Validation Checklist
+- [ ] `west build -b native_sim` succeeds for at least one sample and one app target.
+- [ ] Built binary runs on host and emits expected startup logs.
+- [ ] Host debugger (GDB/Valgrind) can attach and surface expected symbols.
+- [ ] Simulation test path is integrated into CI (for example Twister native_sim run).
+
 ## Resources
 
 - **[References](references/)**:

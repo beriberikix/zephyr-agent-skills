@@ -48,6 +48,12 @@ while (1) {
 - **Zero-Pop Audio**: Always use volume ramping when starting or stopping I2S streams to protect hardware and improve user experience.
 - **Bitmask Health Monitoring**: Use a bitmask to track the health of all background threads; the watchdog monitor only feeds the timer if ALL bits are set periodically.
 
+## Validation Checklist
+- [ ] GUI render loop maintains target frame behavior without starving control tasks.
+- [ ] I2S audio stream starts/stops without underruns or audible artifacts.
+- [ ] Watchdog feed policy resets the system when health criteria are not met.
+- [ ] Fault-injection scenarios produce expected reset reason and recovery behavior.
+
 ## Resources
 
 - **[References](references/)**:

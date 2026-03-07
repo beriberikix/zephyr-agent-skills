@@ -46,6 +46,12 @@ modbus_init_server(dev, param);
 - **Isolated Communication**: Use galvanically isolated transceivers for both serial and CAN lines in factory environments to prevent damage from ground loops.
 - **Watchdog Integration**: In industrial control, always pair your communication loops with the **watchdog_reliability** pattern (see **specialized** skill) to ensure the system enters a fail-safe state on protocol lockup.
 
+## Validation Checklist
+- [ ] Modbus RTU request/response exchange succeeds against a known test slave/master.
+- [ ] Modbus TCP endpoint responds on port 502 with correct register mappings.
+- [ ] CANopen node transitions through expected NMT states during startup.
+- [ ] Communication faults trigger safe retry or watchdog-protected recovery behavior.
+
 ## Resources
 
 - **[References](references/)**:

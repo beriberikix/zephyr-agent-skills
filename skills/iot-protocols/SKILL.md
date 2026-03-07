@@ -47,6 +47,12 @@ ot thread start
 - **Cloud-Mesh Gateways**: Implement Thread Border Routers to bridge local mesh traffic to Golioth or other cloud backends.
 - **Battery Optimization**: Use Sleepy End Device (SED) modes for Thread/LoRaWAN nodes to achieve multi-year battery life.
 
+## Validation Checklist
+- [ ] OpenThread device forms or joins a mesh and maintains stable role/state.
+- [ ] Matter commissioning completes and cluster interactions succeed.
+- [ ] Cloud telemetry path (for example Golioth) delivers and receives expected state updates.
+- [ ] LoRaWAN join and uplink/downlink flow work with expected data rate behavior.
+
 ## Resources
 
 - **[References](references/)**:

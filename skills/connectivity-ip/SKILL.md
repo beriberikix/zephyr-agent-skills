@@ -39,6 +39,12 @@ CONFIG_DNS_RESOLVER=y
 - **Manifest Control**: Use an `allow-list` in your `west.yml` to prevent cloning hundreds of megabytes of unused vendor modules.
 - **Async DNS**: Use the asynchronous DNS resolver to prevent blocking the main application thread during host lookup.
 
+## Validation Checklist
+- [ ] Device obtains network connectivity and resolves DNS for the configured backend.
+- [ ] Selected protocol path (CoAP, MQTT, or LwM2M) completes connect and message exchange.
+- [ ] Disabled stack features (for example IPv6 or TCP) are absent from final `.config` when trimmed.
+- [ ] RAM/Flash footprint meets the expected optimization target after stack tuning.
+
 ## Resources
 
 - **[References](references/)**:

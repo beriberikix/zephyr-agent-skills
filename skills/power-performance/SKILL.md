@@ -41,6 +41,12 @@ void sleep_spi(void) {
 - **Runtime Monitoring**: Always enable the thread analyzer during development to find the "RAM floor" for your application.
 - **Coordinated Sleep**: To coordinate sleep across modules, see **[Zbus](../kernel-services/references/zbus.md)** for event-driven power management.
 
+## Validation Checklist
+- [ ] Target peripherals enter and exit suspend/resume states without functional regressions.
+- [ ] Measured idle and active power align with expected optimization deltas.
+- [ ] Thread analyzer and map data confirm stack/RAM budgets are within limits.
+- [ ] Relocated time-critical functions execute from intended memory region.
+
 ## Resources
 
 - **[References](references/)**:
