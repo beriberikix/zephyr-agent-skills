@@ -1,28 +1,30 @@
 {
   "name": "zephyr-agent-skills",
-  "owner": "beriberikix",
-  "plugins": {
-    "zephyr-skills": "..",
-    "board-bringup": "../skills/board-bringup",
-    "build-system": "../skills/build-system",
-    "connectivity-ble": "../skills/connectivity-ble",
-    "connectivity-ip": "../skills/connectivity-ip",
-    "connectivity-usb-can": "../skills/connectivity-usb-can",
-    "devicetree": "../skills/devicetree",
-    "hardware-io": "../skills/hardware-io",
-    "industrial": "../skills/industrial",
-    "iot-protocols": "../skills/iot-protocols",
-    "kernel-basics": "../skills/kernel-basics",
-    "kernel-services": "../skills/kernel-services",
-    "multicore": "../skills/multicore",
-    "native-sim": "../skills/native-sim",
-    "power-performance": "../skills/power-performance",
-    "security-updates": "../skills/security-updates",
-    "specialized": "../skills/specialized",
-    "storage": "../skills/storage",
-    "testing-debugging": "../skills/testing-debugging",
-    "zephyr-foundations": "../skills/zephyr-foundations",
-    "zephyr-index": "../skills/zephyr-index",
-    "zephyr-module": "../skills/zephyr-module"
-  }
+  "owner": {
+    "name": "beriberikix"
+  },
+  "plugins": [
+    { "name": "zephyr-skills", "source": "./" },
+    { "name": "board-bringup", "source": "./skills/board-bringup" },
+    { "name": "build-system", "source": "./skills/build-system" },
+    { "name": "connectivity-ble", "source": "./skills/connectivity-ble" },
+    { "name": "connectivity-ip", "source": "./skills/connectivity-ip" },
+    { "name": "connectivity-usb-can", "source": "./skills/connectivity-usb-can" },
+    { "name": "devicetree", "source": "./skills/devicetree" },
+    { "name": "hardware-io", "source": "./skills/hardware-io" },
+    { "name": "industrial", "source": "./skills/industrial" },
+    { "name": "iot-protocols", "source": "./skills/iot-protocols" },
+    { "name": "kernel-basics", "source": "./skills/kernel-basics" },
+    { "name": "kernel-services", "source": "./skills/kernel-services" },
+    { "name": "multicore", "source": "./skills/multicore" },
+    { "name": "native-sim", "source": "./skills/native-sim" },
+    { "name": "power-performance", "source": "./skills/power-performance" },
+    { "name": "security-updates", "source": "./skills/security-updates" },
+    { "name": "specialized", "source": "./skills/specialized" },
+    { "name": "storage", "source": "./skills/storage" },
+    { "name": "testing-debugging", "source": "./skills/testing-debugging" },
+    { "name": "zephyr-foundations", "source": "./skills/zephyr-foundations" },
+    { "name": "zephyr-index", "source": "./skills/zephyr-index" },
+    { "name": "zephyr-module", "source": "./skills/zephyr-module" }
+  ]
 }
