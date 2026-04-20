@@ -1,0 +1,420 @@
+{
+  "schema_version": "1",
+  "repo": "beriberikix/zephyr-agent-skills",
+  "updated": "2026-04-20",
+  "skills": [
+    {
+      "name": "board-bringup",
+      "description": "Custom board bringup for Zephyr RTOS using Hardware Model v2 (HWMv2). Covers directory structure, board.yml metadata, core configuration files (Kconfig, defconfig, CMake), and revision management. Trigger when creating new board definitions or porting Zephyr to custom hardware.",
+      "keywords": ["board", "bringup", "hwmv2", "hardware model", "defconfig", "board.yml", "custom hardware", "port", "soc", "kconfig"],
+      "kconfig_patterns": [],
+      "dts_compatible": [],
+      "path": "skills/board-bringup",
+      "files": [
+        "SKILL.md",
+        "assets/board_yml_template.yml",
+        "references/board_files.md",
+        "references/hwmv2_structure.md",
+        "scripts/board_yaml_lint.py"
+      ]
+    },
+    {
+      "name": "build-system",
+      "description": "Build system management for Zephyr RTOS. Covers West workspace initialization, manifest management, Sysbuild multi-image builds, Kconfig symbols, and CMake integration. Trigger when setting up workspaces, configuring builds, or troubleshooting build-time errors.",
+      "keywords": ["west", "cmake", "kconfig", "manifest", "ninja", "sysbuild", "build", "workspace", "west.yml", "module"],
+      "kconfig_patterns": [],
+      "dts_compatible": [],
+      "path": "skills/build-system",
+      "files": [
+        "SKILL.md",
+        "assets/west_manifest_template.yml",
+        "references/cmake.md",
+        "references/kconfig.md",
+        "references/west.md",
+        "scripts/find_modules.sh"
+      ]
+    },
+    {
+      "name": "connectivity-ble",
+      "description": "BLE and Bluetooth management for Zephyr RTOS. Covers GATT services, HCI, advertising, connection management, and power optimization. Trigger when implementing BLE advertising, GATT profiles, or Bluetooth Low Energy applications.",
+      "keywords": ["ble", "bluetooth", "gatt", "hci", "advertising", "characteristic", "bt", "le", "connection", "pairing"],
+      "kconfig_patterns": ["CONFIG_BT.*", "CONFIG_BT_LE.*", "CONFIG_BT_GATT.*"],
+      "dts_compatible": ["nordic,nrf-radio", "ti,cc2650", "zephyr,bt-hci-uart"],
+      "path": "skills/connectivity-ble",
+      "files": [
+        "SKILL.md",
+        "assets/gatt_service_template.c",
+        "references/ble_fundamentals.md",
+        "references/power_optimization.md",
+        "references/send_when_idle.md",
+        "scripts/ble_timing_helper.py"
+      ]
+    },
+    {
+      "name": "connectivity-ip",
+      "description": "IP networking for Zephyr RTOS. Covers MQTT, CoAP, LwM2M, Ethernet, Wi-Fi, and network stack configuration. Trigger when building cloud-connected devices or implementing IP-based protocols.",
+      "keywords": ["ip", "mqtt", "coap", "lwm2m", "networking", "ethernet", "wifi", "tcp", "udp", "socket", "tls"],
+      "kconfig_patterns": [
+        "CONFIG_NET.*",
+        "CONFIG_MQTT_LIB",
+        "CONFIG_COAP",
+        "CONFIG_LWM2M",
+        "CONFIG_WIFI",
+        "CONFIG_NET_L2_ETHERNET"
+      ],
+      "dts_compatible": ["zephyr,net-virtual", "nordic,nrf-nfct"],
+      "path": "skills/connectivity-ip",
+      "files": [
+        "SKILL.md",
+        "assets/prj_minimal_coap.conf",
+        "references/ip_stack_config.md",
+        "references/protocol_selection.md",
+        "references/sdk_module_integration.md",
+        "scripts/net_config_audit.py"
+      ]
+    },
+    {
+      "name": "connectivity-usb-can",
+      "description": "USB device and CAN bus connectivity for Zephyr RTOS. Covers USB device stack, CDC-ACM, CAN controllers, and CANopen basics. Trigger when adding USB or CAN interfaces.",
+      "keywords": ["usb", "can", "canbus", "canopen", "cdc", "acm", "udc", "cdc-acm", "usb-device"],
+      "kconfig_patterns": [
+        "CONFIG_USB_DEVICE_STACK.*",
+        "CONFIG_CAN.*",
+        "CONFIG_USB_CDC_ACM"
+      ],
+      "dts_compatible": ["zephyr,usb-device", "can-controller", "microchip,mcp2515"],
+      "path": "skills/connectivity-usb-can",
+      "files": [
+        "SKILL.md",
+        "assets/can_filters_template.csv",
+        "references/usb_device_stack.md",
+        "references/usb_to_can.md",
+        "scripts/can_filter_lint.py"
+      ]
+    },
+    {
+      "name": "devicetree",
+      "description": "Devicetree management for Zephyr RTOS. Covers syntax, bindings, overlays, Hardware Model v2, and advanced node/property deletion patterns. Trigger when defining hardware topology, creating overlays, or mapping pins and peripherals.",
+      "keywords": ["devicetree", "dts", "overlay", "bindings", "hwmv2", "node", "property", "pinctrl", "compatible", "chosen"],
+      "kconfig_patterns": [],
+      "dts_compatible": [],
+      "path": "skills/devicetree",
+      "files": [
+        "SKILL.md",
+        "assets/app_overlay_template.overlay",
+        "references/dt_bindings.md",
+        "references/dt_overlays.md",
+        "references/dt_syntax.md",
+        "scripts/overlay_include_check.py"
+      ]
+    },
+    {
+      "name": "hardware-io",
+      "description": "Hardware interfacing and peripheral management for Zephyr RTOS. Covers the sensor subsystem, pin control, GPIO, I2C, SPI, ADC, and SoC configuration. Trigger when adding sensors, configuring pinmux, or developing hardware driver applications.",
+      "keywords": ["gpio", "i2c", "spi", "sensor", "pinctrl", "uart", "adc", "pwm", "peripheral", "driver", "hardware"],
+      "kconfig_patterns": [
+        "CONFIG_GPIO",
+        "CONFIG_I2C.*",
+        "CONFIG_SPI.*",
+        "CONFIG_SENSOR",
+        "CONFIG_ADC",
+        "CONFIG_UART.*",
+        "CONFIG_PWM.*"
+      ],
+      "dts_compatible": [
+        "gpio-keys",
+        "i2c-device",
+        "spi-device",
+        "nordic,nrf-twi",
+        "nordic,nrf-spim",
+        "st,stm32-i2c-v2",
+        "bosch,bmp280",
+        "st,lsm6dsl"
+      ],
+      "path": "skills/hardware-io",
+      "files": [
+        "SKILL.md",
+        "assets/sensor_poll_template.c",
+        "references/pinctrl_gpio.md",
+        "references/sensors.md",
+        "references/soc_config.md",
+        "scripts/gpio_alias_check.py"
+      ]
+    },
+    {
+      "name": "industrial",
+      "description": "Industrial communication protocols for Zephyr RTOS. Covers Modbus RTU, Modbus TCP, and CANopen basics. Trigger when building factory automation controllers, industrial sensors, or medical equipment interfaces.",
+      "keywords": ["industrial", "modbus", "canopen", "rtu", "plc", "factory", "automation", "serial", "rs485"],
+      "kconfig_patterns": ["CONFIG_MODBUS.*", "CONFIG_CAN.*"],
+      "dts_compatible": [],
+      "path": "skills/industrial",
+      "files": [
+        "SKILL.md",
+        "assets/modbus_register_map_template.csv",
+        "references/canopen_basics.md",
+        "references/modbus_rtu.md",
+        "references/modbus_tcp.md",
+        "scripts/modbus_register_lint.py"
+      ]
+    },
+    {
+      "name": "iot-protocols",
+      "description": "Advanced IoT protocols for Zephyr RTOS. Covers OpenThread mesh networking, Matter-over-Thread, Golioth Cloud SDK, and LoRaWAN. Trigger when building smart home devices, wide-area sensor networks, or cloud-integrated hardware.",
+      "keywords": ["iot", "openthread", "thread", "matter", "golioth", "lorawan", "cloud", "mesh", "otbr"],
+      "kconfig_patterns": [
+        "CONFIG_OPENTHREAD.*",
+        "CONFIG_CHIP.*",
+        "CONFIG_LORAWAN.*"
+      ],
+      "dts_compatible": [],
+      "path": "skills/iot-protocols",
+      "files": [
+        "SKILL.md",
+        "assets/thread_dataset_template.env",
+        "references/golioth_sdk.md",
+        "references/lorawan_basics.md",
+        "references/matter_devices.md",
+        "references/openthread_integration.md",
+        "scripts/dataset_kv_check.py"
+      ]
+    },
+    {
+      "name": "kernel-basics",
+      "description": "Essential Zephyr RTOS kernel services. Covers thread lifecycle and priority, the logging subsystem, and the interactive shell. Trigger when writing application flows, adding logging, or creating interactive CLI commands.",
+      "keywords": ["kernel", "thread", "logging", "shell", "priority", "stack", "workqueue", "semaphore", "mutex", "log"],
+      "kconfig_patterns": [
+        "CONFIG_LOG.*",
+        "CONFIG_SHELL.*",
+        "CONFIG_PRINTK"
+      ],
+      "dts_compatible": [],
+      "path": "skills/kernel-basics",
+      "files": [
+        "SKILL.md",
+        "assets/shell_command_template.c",
+        "references/logging.md",
+        "references/shell.md",
+        "references/threads.md",
+        "scripts/log_summary.py"
+      ]
+    },
+    {
+      "name": "kernel-services",
+      "description": "Advanced Zephyr RTOS kernel services. Covers Zbus pub/sub, State Machine Framework, work queues, and the Settings subsystem. Trigger when building modular architectures, complex state machines, or persistent configuration storage.",
+      "keywords": ["zbus", "smf", "state machine", "workqueue", "settings", "pub/sub", "ipc", "events", "pipes"],
+      "kconfig_patterns": [
+        "CONFIG_ZBUS.*",
+        "CONFIG_SMF.*",
+        "CONFIG_SETTINGS.*",
+        "CONFIG_EVENTS"
+      ],
+      "dts_compatible": [],
+      "path": "skills/kernel-services",
+      "files": [
+        "SKILL.md",
+        "assets/smf_state_table_template.c",
+        "references/settings_workqueue.md",
+        "references/smf.md",
+        "references/zbus.md",
+        "scripts/zbus_channel_lint.py"
+      ]
+    },
+    {
+      "name": "multicore",
+      "description": "Multicore and SMP development for Zephyr RTOS. Covers RPMsg/OpenAMP IPC, SMP thread affinity, LLEXT loadable extensions, and dual-core application patterns. Trigger when targeting multicore SoCs or implementing inter-processor communication.",
+      "keywords": ["multicore", "rpmsg", "openamp", "smp", "ipc", "dual core", "cpucluster", "amp", "llext"],
+      "kconfig_patterns": [
+        "CONFIG_MBOX.*",
+        "CONFIG_IPC_SERVICE.*",
+        "CONFIG_RPMSG.*",
+        "CONFIG_SMP",
+        "CONFIG_LLEXT"
+      ],
+      "dts_compatible": ["zephyr,ipc-openamp", "nordic,nrf-ipc"],
+      "path": "skills/multicore",
+      "files": [
+        "SKILL.md",
+        "assets/rpmsg_channel_contract.md",
+        "references/ipc_patterns.md",
+        "references/llext_basics.md",
+        "references/openamp_rpmsg.md",
+        "references/smp_configuration.md",
+        "scripts/smp_config_check.py"
+      ]
+    },
+    {
+      "name": "native-sim",
+      "description": "Host-based simulation using the Zephyr native_sim board. Covers building for Linux/macOS/Windows, automated testing, GDB/Valgrind debugging, and host-target integration. Trigger when developing without hardware or setting up CI tests.",
+      "keywords": ["native_sim", "simulation", "host", "ci", "testing", "posix", "linux", "valgrind", "gdb", "emulation"],
+      "kconfig_patterns": [],
+      "dts_compatible": [],
+      "path": "skills/native-sim",
+      "files": [
+        "SKILL.md",
+        "assets/native_sim_ci_checklist.md",
+        "references/debugging.md",
+        "references/simulation_basics.md",
+        "scripts/native_log_scan.py"
+      ]
+    },
+    {
+      "name": "power-performance",
+      "description": "Power management and performance tuning for Zephyr RTOS. Covers device power states, system sleep, wakeup sources, CPU frequency scaling, and energy profiling. Trigger when optimizing battery life or meeting latency requirements.",
+      "keywords": ["power", "pm", "sleep", "wakeup", "lpm", "performance", "battery", "idle", "suspend", "frequency"],
+      "kconfig_patterns": [
+        "CONFIG_PM.*",
+        "CONFIG_PM_DEVICE.*",
+        "CONFIG_POWEROFF",
+        "CONFIG_CPU_IDLE"
+      ],
+      "dts_compatible": [],
+      "path": "skills/power-performance",
+      "files": [
+        "SKILL.md",
+        "assets/power_budget_template.csv",
+        "references/performance_tuning.md",
+        "references/power_management.md",
+        "scripts/power_budget_estimator.py"
+      ]
+    },
+    {
+      "name": "security-updates",
+      "description": "Secure boot and firmware update workflows for Zephyr RTOS. Covers MCUboot integration, image signing, DFU via MCUmgr, fail-safe rollback, and mbedTLS crypto. Trigger when implementing OTA updates, securing the boot process, or managing cryptographic keys.",
+      "keywords": ["mcuboot", "ota", "security", "signing", "dfu", "mcumgr", "rollback", "bootloader", "mbedtls", "crypto", "fota"],
+      "kconfig_patterns": [
+        "CONFIG_BOOTLOADER_MCUBOOT",
+        "CONFIG_MCUMGR.*",
+        "CONFIG_MBEDTLS.*",
+        "CONFIG_IMG_MANAGER"
+      ],
+      "dts_compatible": ["fixed-partitions"],
+      "path": "skills/security-updates",
+      "files": [
+        "SKILL.md",
+        "assets/mcuboot_prj_fragment.conf",
+        "references/crypto_basics.md",
+        "references/dfu_protocols.md",
+        "references/image_signing.md",
+        "references/mcuboot_integration.md",
+        "references/rollback_protection.md",
+        "scripts/mcuboot_version_guard.py"
+      ]
+    },
+    {
+      "name": "specialized",
+      "description": "Specialized Zephyr RTOS subsystems: audio I2S, LVGL GUI, watchdog reliability, and fault injection testing. Trigger when adding audio, display interfaces, reliability monitoring, or fault tolerance.",
+      "keywords": ["audio", "i2s", "lvgl", "gui", "display", "watchdog", "fault", "reliability", "codec", "dac"],
+      "kconfig_patterns": [
+        "CONFIG_AUDIO.*",
+        "CONFIG_I2S.*",
+        "CONFIG_LVGL",
+        "CONFIG_WATCHDOG"
+      ],
+      "dts_compatible": ["i2s-codec", "zephyr,lvgl-pointer-input"],
+      "path": "skills/specialized",
+      "files": [
+        "SKILL.md",
+        "assets/watchdog_health_map_template.h",
+        "references/audio_i2s.md",
+        "references/fault_injection.md",
+        "references/lvgl_gui.md",
+        "references/watchdog_reliability.md",
+        "scripts/watchdog_window_check.py"
+      ]
+    },
+    {
+      "name": "storage",
+      "description": "Flash storage management for Zephyr RTOS. Covers NVS key-value storage, FAT filesystem, LittleFS, flash partition management, and wear levelling. Trigger when persisting data, managing file systems, or partitioning flash.",
+      "keywords": ["flash", "nvs", "storage", "littlefs", "fatfs", "partition", "filesystem", "wear levelling", "erase"],
+      "kconfig_patterns": [
+        "CONFIG_FLASH.*",
+        "CONFIG_NVS",
+        "CONFIG_FAT_FILESYSTEM_ELM",
+        "CONFIG_FILE_SYSTEM_LITTLEFS",
+        "CONFIG_FLASH_MAP"
+      ],
+      "dts_compatible": [
+        "fixed-partitions",
+        "jedec,spi-nor",
+        "nordic,nrf-flash",
+        "soc-nv-flash"
+      ],
+      "path": "skills/storage",
+      "files": [
+        "SKILL.md",
+        "assets/partition_overlay_template.overlay",
+        "references/flash_management.md",
+        "references/nvs_storage.md",
+        "scripts/nvs_id_lint.py"
+      ]
+    },
+    {
+      "name": "testing-debugging",
+      "description": "Testing and debugging for Zephyr RTOS. Covers ztest framework, Twister test runner, GDB debugging, tracing, and CI integration. Trigger when writing unit tests, running hardware-in-the-loop tests, or debugging production issues.",
+      "keywords": ["ztest", "twister", "testing", "gdb", "debugging", "tracing", "coverage", "ci", "unit test", "integration test"],
+      "kconfig_patterns": [
+        "CONFIG_ZTEST.*",
+        "CONFIG_TRACING.*",
+        "CONFIG_DEBUG.*"
+      ],
+      "dts_compatible": [],
+      "path": "skills/testing-debugging",
+      "files": [
+        "SKILL.md",
+        "assets/testcase.yaml.template",
+        "references/tracing_debugging.md",
+        "references/twister_testing.md",
+        "references/ztest_framework.md",
+        "scripts/twister_smoke.py"
+      ]
+    },
+    {
+      "name": "zephyr-foundations",
+      "description": "Core Zephyr RTOS programming patterns. Covers Zephyr macros, error handling idioms, concurrency primitives, and Devicetree basics for driver authors. Trigger when starting a new Zephyr driver or learning core Zephyr APIs.",
+      "keywords": ["zephyr", "macros", "error handling", "concurrency", "errno", "kernel", "foundation", "api", "driver", "init"],
+      "kconfig_patterns": [],
+      "dts_compatible": [],
+      "path": "skills/zephyr-foundations",
+      "files": [
+        "SKILL.md",
+        "assets/foundation_examples/template_driver.c",
+        "references/concurrency.md",
+        "references/devicetree_basics.md",
+        "references/error_handling.md",
+        "references/zephyr_macros.md",
+        "scripts/errno_return_check.py"
+      ]
+    },
+    {
+      "name": "zephyr-index",
+      "description": "Navigation hub for the Zephyr RTOS Agent Skill ecosystem. Use to discover, select, and navigate to specialised skills. Trigger when you are unsure which skill applies to your task.",
+      "keywords": ["index", "navigation", "catalog", "discovery", "skill", "overview", "help", "start"],
+      "kconfig_patterns": [],
+      "dts_compatible": [],
+      "path": "skills/zephyr-index",
+      "files": [
+        "SKILL.md",
+        "assets/task_skill_keywords.csv",
+        "references/decision_tree.md",
+        "references/quick_reference.md",
+        "references/skill_catalog.md",
+        "scripts/task_skill_match.py"
+      ]
+    },
+    {
+      "name": "zephyr-module",
+      "description": "Out-of-tree Zephyr module development. Covers module.yml, west integration, external CMake library structure, and board/Kconfig extensions. Trigger when packaging reusable Zephyr components or integrating vendor SDKs.",
+      "keywords": ["module", "west", "out-of-tree", "module.yml", "external", "library", "vendor", "sdk", "cmake", "kconfig"],
+      "kconfig_patterns": [],
+      "dts_compatible": [],
+      "path": "skills/zephyr-module",
+      "files": [
+        "SKILL.md",
+        "assets/module_yml_template.yml",
+        "references/module_definition.md",
+        "references/west_integration.md",
+        "scripts/module_manifest_check.py"
+      ]
+    }
+  ]
+}
