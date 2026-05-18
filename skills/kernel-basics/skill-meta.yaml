@@ -1,0 +1,23 @@
+# Matcher metadata for `zephyr-cli skills suggest` (index.json v2).
+# Curated and hand-editable; not consumed by the Claude Code skill loader.
+summary: Core kernel — threads, scheduling and priority, the logging subsystem, the shell.
+keywords:
+- thread
+- threads
+- logging
+- log
+- shell
+- scheduler
+- priority
+- printk
+- cli
+- console
+- shell command
+- thread priority
+aliases: []
+kconfig_patterns:
+- CONFIG_LOG*
+- CONFIG_SHELL*
+- CONFIG_PRINTK*
+dts_compatible: []
+weight: 1.0

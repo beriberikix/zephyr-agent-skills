@@ -21,6 +21,7 @@ REPO_ROOT = Path(__file__).resolve().parent.parent
 SKILLS_DIR = REPO_ROOT / "skills"
 CATALOG_FILE = REPO_ROOT / "skills" / "zephyr-index" / "references" / "skill_catalog.md"
 MARKETPLACE_FILE = REPO_ROOT / ".claude-plugin" / "marketplace.json"
+INDEX_FILE = REPO_ROOT / "index.json"
 QUICK_VALIDATE = REPO_ROOT / ".agent" / "skills" / "skill-creator" / "scripts" / "quick_validate.py"
 
 LINK_RE = re.compile(r"\[[^\]]+\]\(([^)]+)\)")
@@ -174,6 +175,60 @@ def check_marketplace(expected_skills: set[str]) -> list[str]:
     return errors
 
 
+def check_skill_meta(skill_dir: Path) -> list[str]:
+    if not (skill_dir / "skill-meta.yaml").exists():
+        return [f"{skill_dir.name}: missing skill-meta.yaml (matcher metadata for index.json)"]
+    return []
+
+
+def check_index(expected_skills: set[str]) -> list[str]:
+    errors: list[str] = []
+    if not INDEX_FILE.exists():
+        return [f"missing index file: {INDEX_FILE} (run scripts/generate_index.py)"]
+    try:
+        data = json.loads(INDEX_FILE.read_text(encoding="utf-8"))
+    except json.JSONDecodeError as exc:
+        return [f"index.json: invalid JSON: {exc}"]
+
+    skills = data.get("skills")
+    if not isinstance(skills, list):
+        return ["index.json: 'skills' must be an array"]
+
+    index_names = {s.get("name") for s in skills}
+    missing = sorted(expected_skills - index_names)
+    extra = sorted(n for n in index_names - expected_skills if n)
+    if missing:
+        errors.append(
+            f"index.json missing skill entries: {', '.join(missing)} "
+            f"(run scripts/generate_index.py)"
+        )
+    if extra:
+        errors.append(f"index.json has unknown skill entries: {', '.join(extra)}")
+
+    for skill in skills:
+        name = skill.get("name", "?")
+        if skill.get("path") != f"skills/{name}":
+            errors.append(
+                f"index.json: {name}: path should be 'skills/{name}', got '{skill.get('path')}'"
+            )
+        files = skill.get("files") or []
+        if not files:
+            errors.append(f"index.json: {name}: empty 'files' list")
+        for rel in files:
+            if not (SKILLS_DIR / name / rel).exists():
+                errors.append(f"index.json: {name}: listed file missing on disk: {rel}")
+        for pat in skill.get("kconfig_patterns") or []:
+            try:
+                re.compile("^" + re.escape(pat).replace(r"\*", ".*") + "$")
+            except re.error as exc:
+                errors.append(f"index.json: {name}: invalid kconfig pattern '{pat}': {exc}")
+        match_fields = ("keywords", "aliases", "kconfig_patterns", "dts_compatible")
+        if name != "zephyr-index" and not any(skill.get(f) for f in match_fields):
+            errors.append(f"index.json: {name}: no match metadata (keywords/aliases/kconfig/dts empty)")
+
+    return errors
+
+
 def run_all_checks() -> list[str]:
     if not QUICK_VALIDATE.exists():
         raise ValidationError(f"quick validator not found: {QUICK_VALIDATE}")
@@ -188,9 +243,11 @@ def run_all_checks() -> list[str]:
         errors.extend(check_frontmatter(skill_dir))
         errors.extend(check_skill_sections(skill_md))
         errors.extend(check_skill_links(skill_md))
+        errors.extend(check_skill_meta(skill_dir))
 
     errors.extend(check_catalog(expected_skills))
     errors.extend(check_marketplace(expected_skills))
+    errors.extend(check_index(expected_skills))
 
     return errors
 

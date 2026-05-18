@@ -1,0 +1,27 @@
+# Matcher metadata for `zephyr-cli skills suggest` (index.json v2).
+# Curated and hand-editable; not consumed by the Claude Code skill loader.
+summary: USB device stack and CAN bus — CDC-ACM, USB classes, CAN controllers, CANopen.
+keywords:
+- usb
+- can
+- cdc
+- canbus
+- enumeration
+- descriptor
+- cdc-acm
+- usb device
+- can bus
+- can controller
+- usb class
+aliases:
+- udc
+- acm
+kconfig_patterns:
+- CONFIG_USB*
+- CONFIG_USBD*
+- CONFIG_CAN*
+dts_compatible:
+- zephyr,usb-device
+- can-controller
+- microchip,mcp2515
+weight: 1.0

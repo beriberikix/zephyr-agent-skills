@@ -1,0 +1,22 @@
+# Matcher metadata for `zephyr-cli skills suggest` (index.json v2).
+# Curated and hand-editable; not consumed by the Claude Code skill loader.
+summary: Custom board bringup with Hardware Model v2 — board.yml, board directory layout, defconfig.
+keywords:
+- board
+- bringup
+- porting
+- pcb
+- defconfig
+- hwmv2
+- soc
+- carrier
+- board.yml
+- custom hardware
+- board revision
+- hardware model v2
+- new board
+aliases:
+- bsp
+kconfig_patterns: []
+dts_compatible: []
+weight: 1.0

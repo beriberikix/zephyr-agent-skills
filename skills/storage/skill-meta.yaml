@@ -1,0 +1,28 @@
+# Matcher metadata for `zephyr-cli skills suggest` (index.json v2).
+# Curated and hand-editable; not consumed by the Claude Code skill loader.
+summary: Flash storage — NVS key-value store, LittleFS and FAT filesystems, flash partitions.
+keywords:
+- flash
+- nvs
+- littlefs
+- fatfs
+- filesystem
+- partition
+- partitions
+- storage
+- wear levelling
+- flash map
+- file system
+aliases:
+- fs
+kconfig_patterns:
+- CONFIG_FLASH*
+- CONFIG_NVS*
+- CONFIG_FILE_SYSTEM*
+- CONFIG_FAT_FILESYSTEM*
+dts_compatible:
+- fixed-partitions
+- jedec,spi-nor
+- nordic,nrf-flash
+- soc-nv-flash
+weight: 1.0

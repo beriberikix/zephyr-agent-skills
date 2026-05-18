@@ -1,0 +1,34 @@
+# Matcher metadata for `zephyr-cli skills suggest` (index.json v2).
+# Curated and hand-editable; not consumed by the Claude Code skill loader.
+summary: Testing and debugging — Ztest, the Twister runner and harnesses, tracing, stack analysis.
+keywords:
+- ztest
+- twister
+- test
+- tests
+- testcase
+- tracing
+- trace
+- debugging
+- debug
+- gdb
+- coverage
+- systemview
+- stack
+- profiling
+- profile
+- stack overflow
+- thread analyzer
+- unit test
+- hardware-in-the-loop
+- pytest harness
+aliases:
+- hil
+kconfig_patterns:
+- CONFIG_ZTEST*
+- CONFIG_TRACING*
+- CONFIG_THREAD_ANALYZER*
+- CONFIG_STACK_SENTINEL*
+- CONFIG_COVERAGE*
+dts_compatible: []
+weight: 1.0

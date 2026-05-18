@@ -1,0 +1,18 @@
+# Matcher metadata for `zephyr-cli skills suggest` (index.json v2).
+# Curated and hand-editable; not consumed by the Claude Code skill loader.
+summary: Out-of-tree Zephyr modules — module.yml, west manifest integration, external library packaging.
+keywords:
+- module
+- modules
+- vendor
+- component
+- external
+- out-of-tree
+- module.yml
+- external library
+- vendor sdk
+- reusable component
+aliases: []
+kconfig_patterns: []
+dts_compatible: []
+weight: 1.0

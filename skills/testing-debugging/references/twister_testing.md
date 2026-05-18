@@ -60,5 +60,25 @@ Twister generates comprehensive reports in XML and JSON formats, ideal for CI/CD
     path: twister-out/twister.json
 ```
 
+### 5. pytest Harness
+For integration tests driven from Python — serial console interaction, USB, networking —
+use the `pytest` harness instead of `ztest`. Twister builds and flashes the image, then
+runs your pytest code against the device and reports results.
+```yaml
+tests:
+  my_feature.integration:
+    harness: pytest
+    harness_config:
+      pytest_root:
+        - "pytest/test_integration.py"
+      pytest_args:
+        - "-k=smoke"
+    platform_allow: nrf52840dk/nrf52840
+```
+The pytest files live alongside `testcase.yaml`. Twister injects fixtures such as `dut`
+(the device handle) and `shell`. Add `fixture: <name>` under `harness_config` to require
+a named hardware-rig capability, so the test is only scheduled on a board (in the
+`--hardware-map`) that advertises it.
+
 ## Professional Insight
 Use the **test quarantine** feature for flaky tests in large repositories. Mark unstable tests in a `quarantine.yaml` file to prevent them from breaking the entire CI pipeline while they are being investigated.

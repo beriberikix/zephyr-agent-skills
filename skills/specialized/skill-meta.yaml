@@ -1,0 +1,27 @@
+# Matcher metadata for `zephyr-cli skills suggest` (index.json v2).
+# Curated and hand-editable; not consumed by the Claude Code skill loader.
+summary: Specialized subsystems — LVGL display GUI, I2S audio, watchdog, fault injection.
+keywords:
+- lvgl
+- display
+- audio
+- watchdog
+- wdt
+- codec
+- graphics
+- i2s
+- dac
+- gui
+- fault injection
+aliases: []
+kconfig_patterns:
+- CONFIG_LVGL*
+- CONFIG_AUDIO*
+- CONFIG_I2S*
+- CONFIG_WATCHDOG*
+- CONFIG_WDT*
+- CONFIG_DISPLAY*
+dts_compatible:
+- i2s-codec
+- zephyr,lvgl-pointer-input
+weight: 1.0

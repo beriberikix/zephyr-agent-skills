@@ -1,6 +1,6 @@
 ---
 name: zephyr-index
-description: Navigation hub for the Zephyr RTOS Agent Skill ecosystem. Use this skill to discover, select, and navigate to specialized skills for building, configuring, and debugging Zephyr-based embedded applications. Trigger when you are unsure which specialized Zephyr skill to apply to a task.
+description: Static human-browsable catalog of the Zephyr RTOS skill set. Skill selection is handled by the zephyr-agent-skills entry point and by zephyr-cli skills suggest; this index is a reference listing only, not a task skill.
 ---
 
 # Zephyr Index

@@ -1,0 +1,34 @@
+# Matcher metadata for `zephyr-cli skills suggest` (index.json v2).
+# Curated and hand-editable; not consumed by the Claude Code skill loader.
+summary: Peripheral driver usage — GPIO, I2C, SPI, ADC, PWM, UART, the sensor subsystem, pinmux.
+keywords:
+- gpio
+- i2c
+- spi
+- adc
+- pwm
+- uart
+- sensor
+- sensors
+- peripheral
+- pinmux
+- sensor subsystem
+- device driver
+aliases:
+- io
+kconfig_patterns:
+- CONFIG_GPIO*
+- CONFIG_I2C*
+- CONFIG_SPI*
+- CONFIG_SENSOR*
+- CONFIG_ADC*
+- CONFIG_PWM*
+- CONFIG_UART*
+dts_compatible:
+- gpio-keys
+- nordic,nrf-twi
+- nordic,nrf-spim
+- st,stm32-i2c-v2
+- bosch,bmp280
+- st,lsm6dsl
+weight: 1.0

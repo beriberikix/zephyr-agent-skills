@@ -1,0 +1,29 @@
+# Matcher metadata for `zephyr-cli skills suggest` (index.json v2).
+# Curated and hand-editable; not consumed by the Claude Code skill loader.
+summary: IP networking — MQTT, CoAP, LwM2M, sockets, Wi-Fi, Ethernet, network stack tuning.
+keywords:
+- networking
+- network
+- mqtt
+- coap
+- lwm2m
+- socket
+- sockets
+- ethernet
+- wifi
+- tcp
+- udp
+- dns
+- network stack
+- tcp/ip
+aliases:
+- tls
+kconfig_patterns:
+- CONFIG_NET*
+- CONFIG_MQTT*
+- CONFIG_COAP*
+- CONFIG_LWM2M*
+- CONFIG_WIFI*
+dts_compatible:
+- zephyr,net-virtual
+weight: 1.0

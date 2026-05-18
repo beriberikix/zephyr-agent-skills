@@ -1,0 +1,36 @@
+# Matcher metadata for `zephyr-cli skills suggest` (index.json v2).
+# Curated and hand-editable; not consumed by the Claude Code skill loader.
+summary: Multicore and AMP — SMP, RPMsg/OpenAMP IPC, LLEXT, nRF5340 multi-domain sysbuild.
+keywords:
+- multicore
+- smp
+- rpmsg
+- openamp
+- ipc
+- llext
+- elf
+- cpunet
+- netcore
+- nrf5340
+- domain
+- domains
+- multidomain
+- mailbox
+- ipm
+- net core
+- network core
+- dual core
+- inter-processor
+aliases:
+- amp
+kconfig_patterns:
+- CONFIG_SMP*
+- CONFIG_MBOX*
+- CONFIG_IPC_SERVICE*
+- CONFIG_RPMSG*
+- CONFIG_OPENAMP*
+- CONFIG_LLEXT*
+dts_compatible:
+- zephyr,ipc-openamp
+- nordic,nrf-ipc
+weight: 1.0

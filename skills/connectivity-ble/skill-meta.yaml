@@ -1,0 +1,27 @@
+# Matcher metadata for `zephyr-cli skills suggest` (index.json v2).
+# Curated and hand-editable; not consumed by the Claude Code skill loader.
+summary: Bluetooth Low Energy — GATT services, advertising, connections, BLE power optimization.
+keywords:
+- bluetooth
+- ble
+- gatt
+- advertising
+- advertise
+- characteristic
+- pairing
+- bonding
+- hci
+- central
+- connection parameters
+- send-when-idle
+- peripheral role
+aliases:
+- bt
+- le
+kconfig_patterns:
+- CONFIG_BT*
+dts_compatible:
+- nordic,nrf-radio
+- ti,cc2650
+- zephyr,bt-hci-uart
+weight: 1.0

@@ -1,0 +1,8 @@
+# Matcher metadata for `zephyr-cli skills suggest` (index.json v2).
+# Curated and hand-editable; not consumed by the Claude Code skill loader.
+summary: Navigation hub for the Zephyr skill catalog.
+keywords: []
+aliases: []
+kconfig_patterns: []
+dts_compatible: []
+weight: 0.0

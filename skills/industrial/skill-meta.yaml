@@ -1,0 +1,17 @@
+# Matcher metadata for `zephyr-cli skills suggest` (index.json v2).
+# Curated and hand-editable; not consumed by the Claude Code skill loader.
+summary: Industrial fieldbus protocols — Modbus RTU, Modbus TCP, CANopen.
+keywords:
+- modbus
+- canopen
+- rtu
+- plc
+- rs485
+- fieldbus
+- industrial
+- factory automation
+aliases: []
+kconfig_patterns:
+- CONFIG_MODBUS*
+dts_compatible: []
+weight: 1.0

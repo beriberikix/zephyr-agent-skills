@@ -1,0 +1,22 @@
+# Matcher metadata for `zephyr-cli skills suggest` (index.json v2).
+# Curated and hand-editable; not consumed by the Claude Code skill loader.
+summary: Devicetree authoring — overlays, bindings, node status, pinctrl, /delete-node/.
+keywords:
+- devicetree
+- overlay
+- overlays
+- bindings
+- binding
+- compatible
+- chosen
+- pinctrl
+- phandle
+- dts
+- dtsi
+- delete-node
+- delete-property
+aliases:
+- dt
+kconfig_patterns: []
+dts_compatible: []
+weight: 1.0

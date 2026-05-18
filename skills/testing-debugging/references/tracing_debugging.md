@@ -17,6 +17,19 @@ CONFIG_TRACING_SYSCALL=y
 - **CTF (Common Trace Format)**: Standard format for offline analysis with tools like TraceCompass.
 - **User Tracing**: Add custom trace points in your application code.
 
+### 3. Segger SystemView and RTT
+SystemView gives a live timeline of thread switches, ISRs, and kernel events, carried over
+the Segger RTT transport — no extra wiring, since a J-Link probe (or the on-board J-Link on
+Nordic DKs) carries it.
+```kconfig
+CONFIG_TRACING=y
+CONFIG_SEGGER_SYSTEMVIEW=y
+CONFIG_USE_SEGGER_RTT=y
+```
+RTT also works as a low-overhead logging backend, independent of tracing, with
+`CONFIG_LOG_BACKEND_RTT=y`. To capture: open the SystemView desktop app, pick the J-Link
+recorder and target device, and let it auto-detect the RTT control block.
+
 ## Thread & Stack Analysis
 Memory issues (stack overflows) are common in RTOS development.
 
@@ -36,7 +49,7 @@ CONFIG_THREAD_ANALYZER_AUTO=y
 ## Debugging Workflow
 1. **Shell Inspection**: Use the `devmem`, `kernel`, and `device` shell commands to inspect state at runtime.
 2. **GDB Integration**: Use `west debug` with advanced probes (J-Link, ST-Link) for step-through debugging.
-3. **Core Dumps**: Enable `CONFIG_KOBJECT_TEXT_AREA` to allow Zephyr to generate core dumps on fatal errors, which can be analyzed later in GDB.
+3. **Core Dumps**: Enable `CONFIG_DEBUG_COREDUMP` to allow Zephyr to generate core dumps on fatal errors, which can be analyzed later in GDB.
 
 ## Professional Tip: Latency Analysis
 Use the `TRACING_ISR_ENTER` and `TRACING_ISR_EXIT` hooks to measure interrupt latency. This is critical for high-performance motor control or time-sensitive wireless applications.

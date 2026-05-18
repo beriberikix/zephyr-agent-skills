@@ -1,14 +1,33 @@
 {
-  "schema_version": "1",
+  "schema_version": "2",
   "repo": "beriberikix/zephyr-agent-skills",
-  "updated": "2026-04-20",
+  "updated": "2026-05-18",
   "skills": [
     {
       "name": "board-bringup",
       "description": "Custom board bringup for Zephyr RTOS using Hardware Model v2 (HWMv2). Covers directory structure, board.yml metadata, core configuration files (Kconfig, defconfig, CMake), and revision management. Trigger when creating new board definitions or porting Zephyr to custom hardware.",
-      "keywords": ["board", "bringup", "hwmv2", "hardware model", "defconfig", "board.yml", "custom hardware", "port", "soc", "kconfig"],
+      "summary": "Custom board bringup with Hardware Model v2 \u2014 board.yml, board directory layout, defconfig.",
+      "keywords": [
+        "board",
+        "bringup",
+        "porting",
+        "pcb",
+        "defconfig",
+        "hwmv2",
+        "soc",
+        "carrier",
+        "board.yml",
+        "custom hardware",
+        "board revision",
+        "hardware model v2",
+        "new board"
+      ],
+      "aliases": [
+        "bsp"
+      ],
       "kconfig_patterns": [],
       "dts_compatible": [],
+      "weight": 1.0,
       "path": "skills/board-bringup",
       "files": [
         "SKILL.md",
@@ -21,9 +40,28 @@
     {
       "name": "build-system",
       "description": "Build system management for Zephyr RTOS. Covers West workspace initialization, manifest management, Sysbuild multi-image builds, Kconfig symbols, and CMake integration. Trigger when setting up workspaces, configuring builds, or troubleshooting build-time errors.",
-      "keywords": ["west", "cmake", "kconfig", "manifest", "ninja", "sysbuild", "build", "workspace", "west.yml", "module"],
+      "summary": "Zephyr build stack \u2014 west workspaces and manifests, Kconfig, CMake, Sysbuild multi-image builds.",
+      "keywords": [
+        "west",
+        "manifest",
+        "sysbuild",
+        "cmake",
+        "kconfig",
+        "menuconfig",
+        "workspace",
+        "ninja",
+        "cmakelists",
+        "prj.conf",
+        "name-allowlist",
+        "west.yml",
+        "west update",
+        "build error",
+        "extra_conf_file"
+      ],
+      "aliases": [],
       "kconfig_patterns": [],
       "dts_compatible": [],
+      "weight": 1.0,
       "path": "skills/build-system",
       "files": [
         "SKILL.md",
@@ -36,10 +74,36 @@
     },
     {
       "name": "connectivity-ble",
-      "description": "BLE and Bluetooth management for Zephyr RTOS. Covers GATT services, HCI, advertising, connection management, and power optimization. Trigger when implementing BLE advertising, GATT profiles, or Bluetooth Low Energy applications.",
-      "keywords": ["ble", "bluetooth", "gatt", "hci", "advertising", "characteristic", "bt", "le", "connection", "pairing"],
-      "kconfig_patterns": ["CONFIG_BT.*", "CONFIG_BT_LE.*", "CONFIG_BT_GATT.*"],
-      "dts_compatible": ["nordic,nrf-radio", "ti,cc2650", "zephyr,bt-hci-uart"],
+      "description": "Bluetooth Low Energy (BLE) integration for Zephyr RTOS. Covers GATT Services/Characteristics, GAP advertising, connection parameters, power optimization strategies, and the professional Send-When-Idle design pattern. Trigger when adding BLE connectivity, optimizing battery life for wireless devices, or implementing custom GATT profiles.",
+      "summary": "Bluetooth Low Energy \u2014 GATT services, advertising, connections, BLE power optimization.",
+      "keywords": [
+        "bluetooth",
+        "ble",
+        "gatt",
+        "advertising",
+        "advertise",
+        "characteristic",
+        "pairing",
+        "bonding",
+        "hci",
+        "central",
+        "connection parameters",
+        "send-when-idle",
+        "peripheral role"
+      ],
+      "aliases": [
+        "bt",
+        "le"
+      ],
+      "kconfig_patterns": [
+        "CONFIG_BT*"
+      ],
+      "dts_compatible": [
+        "nordic,nrf-radio",
+        "ti,cc2650",
+        "zephyr,bt-hci-uart"
+      ],
+      "weight": 1.0,
       "path": "skills/connectivity-ble",
       "files": [
         "SKILL.md",
@@ -52,17 +116,38 @@
     },
     {
       "name": "connectivity-ip",
-      "description": "IP networking for Zephyr RTOS. Covers MQTT, CoAP, LwM2M, Ethernet, Wi-Fi, and network stack configuration. Trigger when building cloud-connected devices or implementing IP-based protocols.",
-      "keywords": ["ip", "mqtt", "coap", "lwm2m", "networking", "ethernet", "wifi", "tcp", "udp", "socket", "tls"],
-      "kconfig_patterns": [
-        "CONFIG_NET.*",
-        "CONFIG_MQTT_LIB",
-        "CONFIG_COAP",
-        "CONFIG_LWM2M",
-        "CONFIG_WIFI",
-        "CONFIG_NET_L2_ETHERNET"
+      "description": "IP networking fundamentals for Zephyr RTOS. Covers IoT protocol selection (LwM2M, CoAP, MQTT), IP stack configuration and trimming (IPv4/IPv6, UDP/TCP), and professional SDK integration as Zephyr modules using West manifests. Trigger when building cloud-connected applications, optimizing network memory usage, or integrating external cloud SDKs.",
+      "summary": "IP networking \u2014 MQTT, CoAP, LwM2M, sockets, Wi-Fi, Ethernet, network stack tuning.",
+      "keywords": [
+        "networking",
+        "network",
+        "mqtt",
+        "coap",
+        "lwm2m",
+        "socket",
+        "sockets",
+        "ethernet",
+        "wifi",
+        "tcp",
+        "udp",
+        "dns",
+        "network stack",
+        "tcp/ip"
       ],
-      "dts_compatible": ["zephyr,net-virtual", "nordic,nrf-nfct"],
+      "aliases": [
+        "tls"
+      ],
+      "kconfig_patterns": [
+        "CONFIG_NET*",
+        "CONFIG_MQTT*",
+        "CONFIG_COAP*",
+        "CONFIG_LWM2M*",
+        "CONFIG_WIFI*"
+      ],
+      "dts_compatible": [
+        "zephyr,net-virtual"
+      ],
+      "weight": 1.0,
       "path": "skills/connectivity-ip",
       "files": [
         "SKILL.md",
@@ -75,14 +160,36 @@
     },
     {
       "name": "connectivity-usb-can",
-      "description": "USB device and CAN bus connectivity for Zephyr RTOS. Covers USB device stack, CDC-ACM, CAN controllers, and CANopen basics. Trigger when adding USB or CAN interfaces.",
-      "keywords": ["usb", "can", "canbus", "canopen", "cdc", "acm", "udc", "cdc-acm", "usb-device"],
-      "kconfig_patterns": [
-        "CONFIG_USB_DEVICE_STACK.*",
-        "CONFIG_CAN.*",
-        "CONFIG_USB_CDC_ACM"
+      "description": "USB and CAN connectivity for Zephyr RTOS. Covers USB device stack configuration (CDC ACM, HID, MSC), CAN controller integration, and professional USB-to-CAN adapter patterns including buffering and protocol packetization. Trigger when adding USB interfaces, implementing CAN bus communication, or building hardware diagnostic tools.",
+      "summary": "USB device stack and CAN bus \u2014 CDC-ACM, USB classes, CAN controllers, CANopen.",
+      "keywords": [
+        "usb",
+        "can",
+        "cdc",
+        "canbus",
+        "enumeration",
+        "descriptor",
+        "cdc-acm",
+        "usb device",
+        "can bus",
+        "can controller",
+        "usb class"
       ],
-      "dts_compatible": ["zephyr,usb-device", "can-controller", "microchip,mcp2515"],
+      "aliases": [
+        "udc",
+        "acm"
+      ],
+      "kconfig_patterns": [
+        "CONFIG_USB*",
+        "CONFIG_USBD*",
+        "CONFIG_CAN*"
+      ],
+      "dts_compatible": [
+        "zephyr,usb-device",
+        "can-controller",
+        "microchip,mcp2515"
+      ],
+      "weight": 1.0,
       "path": "skills/connectivity-usb-can",
       "files": [
         "SKILL.md",
@@ -94,10 +201,29 @@
     },
     {
       "name": "devicetree",
-      "description": "Devicetree management for Zephyr RTOS. Covers syntax, bindings, overlays, Hardware Model v2, and advanced node/property deletion patterns. Trigger when defining hardware topology, creating overlays, or mapping pins and peripherals.",
-      "keywords": ["devicetree", "dts", "overlay", "bindings", "hwmv2", "node", "property", "pinctrl", "compatible", "chosen"],
+      "description": "Devicetree management for Zephyr RTOS. Covers syntax, bindings, overlays, Hardware Model v2 (HWMv2), and advanced node/property deletion patterns. Trigger when defining hardware topology, creating overlays, or mapping pins and peripherals.",
+      "summary": "Devicetree authoring \u2014 overlays, bindings, node status, pinctrl, /delete-node/.",
+      "keywords": [
+        "devicetree",
+        "overlay",
+        "overlays",
+        "bindings",
+        "binding",
+        "compatible",
+        "chosen",
+        "pinctrl",
+        "phandle",
+        "dts",
+        "dtsi",
+        "delete-node",
+        "delete-property"
+      ],
+      "aliases": [
+        "dt"
+      ],
       "kconfig_patterns": [],
       "dts_compatible": [],
+      "weight": 1.0,
       "path": "skills/devicetree",
       "files": [
         "SKILL.md",
@@ -110,27 +236,43 @@
     },
     {
       "name": "hardware-io",
-      "description": "Hardware interfacing and peripheral management for Zephyr RTOS. Covers the sensor subsystem, pin control, GPIO, I2C, SPI, ADC, and SoC configuration. Trigger when adding sensors, configuring pinmux, or developing hardware driver applications.",
-      "keywords": ["gpio", "i2c", "spi", "sensor", "pinctrl", "uart", "adc", "pwm", "peripheral", "driver", "hardware"],
+      "description": "Hardware interfacing and peripheral management for Zephyr RTOS. Covers the sensor subsystem (channels, triggers, fetch/get), pin control (Pinctrl) and multiplexing, GPIO management using Devicetree specs, and SoC-level hardware configurations. Trigger when adding new hardware components, configuring pinmux, or developing sensor-based applications.",
+      "summary": "Peripheral driver usage \u2014 GPIO, I2C, SPI, ADC, PWM, UART, the sensor subsystem, pinmux.",
+      "keywords": [
+        "gpio",
+        "i2c",
+        "spi",
+        "adc",
+        "pwm",
+        "uart",
+        "sensor",
+        "sensors",
+        "peripheral",
+        "pinmux",
+        "sensor subsystem",
+        "device driver"
+      ],
+      "aliases": [
+        "io"
+      ],
       "kconfig_patterns": [
-        "CONFIG_GPIO",
-        "CONFIG_I2C.*",
-        "CONFIG_SPI.*",
-        "CONFIG_SENSOR",
-        "CONFIG_ADC",
-        "CONFIG_UART.*",
-        "CONFIG_PWM.*"
+        "CONFIG_GPIO*",
+        "CONFIG_I2C*",
+        "CONFIG_SPI*",
+        "CONFIG_SENSOR*",
+        "CONFIG_ADC*",
+        "CONFIG_PWM*",
+        "CONFIG_UART*"
       ],
       "dts_compatible": [
         "gpio-keys",
-        "i2c-device",
-        "spi-device",
         "nordic,nrf-twi",
         "nordic,nrf-spim",
         "st,stm32-i2c-v2",
         "bosch,bmp280",
         "st,lsm6dsl"
       ],
+      "weight": 1.0,
       "path": "skills/hardware-io",
       "files": [
         "SKILL.md",
@@ -143,10 +285,24 @@
     },
     {
       "name": "industrial",
-      "description": "Industrial communication protocols for Zephyr RTOS. Covers Modbus RTU, Modbus TCP, and CANopen basics. Trigger when building factory automation controllers, industrial sensors, or medical equipment interfaces.",
-      "keywords": ["industrial", "modbus", "canopen", "rtu", "plc", "factory", "automation", "serial", "rs485"],
-      "kconfig_patterns": ["CONFIG_MODBUS.*", "CONFIG_CAN.*"],
+      "description": "Industrial communication protocols for Zephyr RTOS. Covers Modbus RTU (serial), Modbus TCP (Ethernet/Wi-Fi), and CANopen basics. Trigger when building factory automation controllers, industrial sensors, or medical equipment interfaces.",
+      "summary": "Industrial fieldbus protocols \u2014 Modbus RTU, Modbus TCP, CANopen.",
+      "keywords": [
+        "modbus",
+        "canopen",
+        "rtu",
+        "plc",
+        "rs485",
+        "fieldbus",
+        "industrial",
+        "factory automation"
+      ],
+      "aliases": [],
+      "kconfig_patterns": [
+        "CONFIG_MODBUS*"
+      ],
       "dts_compatible": [],
+      "weight": 1.0,
       "path": "skills/industrial",
       "files": [
         "SKILL.md",
@@ -159,14 +315,34 @@
     },
     {
       "name": "iot-protocols",
-      "description": "Advanced IoT protocols for Zephyr RTOS. Covers OpenThread mesh networking, Matter-over-Thread, Golioth Cloud SDK, and LoRaWAN. Trigger when building smart home devices, wide-area sensor networks, or cloud-integrated hardware.",
-      "keywords": ["iot", "openthread", "thread", "matter", "golioth", "lorawan", "cloud", "mesh", "otbr"],
+      "description": "Integration of advanced IoT protocols for Zephyr RTOS. Covers OpenThread mesh networking, Matter-over-Thread device development, Golioth Cloud SDK patterns, and LoRaWAN basics. Trigger when building smart home devices, wide-area sensor networks, or cloud-integrated hardware fleets.",
+      "summary": "Long-range and mesh IoT \u2014 OpenThread, Matter, LoRaWAN, Golioth cloud.",
+      "keywords": [
+        "openthread",
+        "matter",
+        "lorawan",
+        "lora",
+        "golioth",
+        "mesh",
+        "otbr",
+        "commissioning",
+        "provisioning",
+        "dataset",
+        "smart home",
+        "border router",
+        "thread mesh"
+      ],
+      "aliases": [
+        "iot"
+      ],
       "kconfig_patterns": [
-        "CONFIG_OPENTHREAD.*",
-        "CONFIG_CHIP.*",
-        "CONFIG_LORAWAN.*"
+        "CONFIG_OPENTHREAD*",
+        "CONFIG_CHIP*",
+        "CONFIG_LORAWAN*",
+        "CONFIG_NET_L2_OPENTHREAD*"
       ],
       "dts_compatible": [],
+      "weight": 1.0,
       "path": "skills/iot-protocols",
       "files": [
         "SKILL.md",
@@ -180,14 +356,30 @@
     },
     {
       "name": "kernel-basics",
-      "description": "Essential Zephyr RTOS kernel services. Covers thread lifecycle and priority, the logging subsystem, and the interactive shell. Trigger when writing application flows, adding logging, or creating interactive CLI commands.",
-      "keywords": ["kernel", "thread", "logging", "shell", "priority", "stack", "workqueue", "semaphore", "mutex", "log"],
+      "description": "Essential Zephyr RTOS kernel services. Covers thread lifecycle and priority, the logging subsystem for diagnostics, and the interactive shell for real-time hardware inspection and debugging. Trigger when writing application flows, adding logging to modules, or creating interactive CLI commands.",
+      "summary": "Core kernel \u2014 threads, scheduling and priority, the logging subsystem, the shell.",
+      "keywords": [
+        "thread",
+        "threads",
+        "logging",
+        "log",
+        "shell",
+        "scheduler",
+        "priority",
+        "printk",
+        "cli",
+        "console",
+        "shell command",
+        "thread priority"
+      ],
+      "aliases": [],
       "kconfig_patterns": [
-        "CONFIG_LOG.*",
-        "CONFIG_SHELL.*",
-        "CONFIG_PRINTK"
+        "CONFIG_LOG*",
+        "CONFIG_SHELL*",
+        "CONFIG_PRINTK*"
       ],
       "dts_compatible": [],
+      "weight": 1.0,
       "path": "skills/kernel-basics",
       "files": [
         "SKILL.md",
@@ -200,15 +392,33 @@
     },
     {
       "name": "kernel-services",
-      "description": "Advanced Zephyr RTOS kernel services. Covers Zbus pub/sub, State Machine Framework, work queues, and the Settings subsystem. Trigger when building modular architectures, complex state machines, or persistent configuration storage.",
-      "keywords": ["zbus", "smf", "state machine", "workqueue", "settings", "pub/sub", "ipc", "events", "pipes"],
+      "description": "Advanced Zephyr RTOS kernel services. Covers inter-thread communication using Zbus (pub/sub), behavioral management with the State Machine Framework (SMF), background processing via work queues, and persistent configuration with the Settings subsystem. Trigger when building modular application architectures, complex state-driven logic, or requiring persistent data storage.",
+      "summary": "Advanced kernel services \u2014 Zbus pub/sub, State Machine Framework, work queues, Settings.",
+      "keywords": [
+        "zbus",
+        "smf",
+        "workqueue",
+        "delayable",
+        "settings",
+        "msgq",
+        "fifo",
+        "k_work",
+        "state",
+        "states",
+        "state machine",
+        "work queue",
+        "message queue",
+        "pub/sub"
+      ],
+      "aliases": [],
       "kconfig_patterns": [
-        "CONFIG_ZBUS.*",
-        "CONFIG_SMF.*",
-        "CONFIG_SETTINGS.*",
-        "CONFIG_EVENTS"
+        "CONFIG_ZBUS*",
+        "CONFIG_SMF*",
+        "CONFIG_SETTINGS*",
+        "CONFIG_EVENTS*"
       ],
       "dts_compatible": [],
+      "weight": 1.0,
       "path": "skills/kernel-services",
       "files": [
         "SKILL.md",
@@ -221,22 +431,52 @@
     },
     {
       "name": "multicore",
-      "description": "Multicore and SMP development for Zephyr RTOS. Covers RPMsg/OpenAMP IPC, SMP thread affinity, LLEXT loadable extensions, and dual-core application patterns. Trigger when targeting multicore SoCs or implementing inter-processor communication.",
-      "keywords": ["multicore", "rpmsg", "openamp", "smp", "ipc", "dual core", "cpucluster", "amp", "llext"],
-      "kconfig_patterns": [
-        "CONFIG_MBOX.*",
-        "CONFIG_IPC_SERVICE.*",
-        "CONFIG_RPMSG.*",
-        "CONFIG_SMP",
-        "CONFIG_LLEXT"
+      "description": "Developing for multicore systems in Zephyr RTOS. Covers Symmetric Multiprocessing (SMP), Asymmetric Multiprocessing (AMP) with OpenAMP/RPMsg, inter-processor communication (IPC) patterns, and Linkable Extensions (LLEXT). Trigger when designing for SoCs with multiple homogeneous or heterogeneous cores.",
+      "summary": "Multicore and AMP \u2014 SMP, RPMsg/OpenAMP IPC, LLEXT, nRF5340 multi-domain sysbuild.",
+      "keywords": [
+        "multicore",
+        "smp",
+        "rpmsg",
+        "openamp",
+        "ipc",
+        "llext",
+        "elf",
+        "cpunet",
+        "netcore",
+        "nrf5340",
+        "domain",
+        "domains",
+        "multidomain",
+        "mailbox",
+        "ipm",
+        "net core",
+        "network core",
+        "dual core",
+        "inter-processor"
       ],
-      "dts_compatible": ["zephyr,ipc-openamp", "nordic,nrf-ipc"],
+      "aliases": [
+        "amp"
+      ],
+      "kconfig_patterns": [
+        "CONFIG_SMP*",
+        "CONFIG_MBOX*",
+        "CONFIG_IPC_SERVICE*",
+        "CONFIG_RPMSG*",
+        "CONFIG_OPENAMP*",
+        "CONFIG_LLEXT*"
+      ],
+      "dts_compatible": [
+        "zephyr,ipc-openamp",
+        "nordic,nrf-ipc"
+      ],
+      "weight": 1.0,
       "path": "skills/multicore",
       "files": [
         "SKILL.md",
         "assets/rpmsg_channel_contract.md",
         "references/ipc_patterns.md",
         "references/llext_basics.md",
+        "references/multidomain_sysbuild.md",
         "references/openamp_rpmsg.md",
         "references/smp_configuration.md",
         "scripts/smp_config_check.py"
@@ -244,10 +484,26 @@
     },
     {
       "name": "native-sim",
-      "description": "Host-based simulation using the Zephyr native_sim board. Covers building for Linux/macOS/Windows, automated testing, GDB/Valgrind debugging, and host-target integration. Trigger when developing without hardware or setting up CI tests.",
-      "keywords": ["native_sim", "simulation", "host", "ci", "testing", "posix", "linux", "valgrind", "gdb", "emulation"],
+      "description": "Host-based simulation using the Zephyr native_sim board. Covers building for Linux/macOS/Windows, automated testing, host-side debugging (GDB, Valgrind), and host-target integration. Trigger when developing application logic without hardware or setting up CI/CD tests.",
+      "summary": "Host simulation on native_sim \u2014 build and run on Linux/macOS, host-side GDB and Valgrind.",
+      "keywords": [
+        "native_sim",
+        "simulation",
+        "simulator",
+        "posix",
+        "host",
+        "laptop",
+        "valgrind",
+        "segfault",
+        "native sim",
+        "host build"
+      ],
+      "aliases": [
+        "sim"
+      ],
       "kconfig_patterns": [],
       "dts_compatible": [],
+      "weight": 1.0,
       "path": "skills/native-sim",
       "files": [
         "SKILL.md",
@@ -259,15 +515,33 @@
     },
     {
       "name": "power-performance",
-      "description": "Power management and performance tuning for Zephyr RTOS. Covers device power states, system sleep, wakeup sources, CPU frequency scaling, and energy profiling. Trigger when optimizing battery life or meeting latency requirements.",
-      "keywords": ["power", "pm", "sleep", "wakeup", "lpm", "performance", "battery", "idle", "suspend", "frequency"],
+      "description": "Power management and performance optimization for Zephyr RTOS. Covers system power states (Idle, Suspend, Off), device-level power management, residency hooks, and code/data relocation for speed efficiency. Trigger when optimizing battery life, reducing latency, or managing memory constraints.",
+      "summary": "Power management and performance \u2014 power states, sleep, wakeup sources, battery, latency.",
+      "keywords": [
+        "power",
+        "sleep",
+        "wakeup",
+        "battery",
+        "idle",
+        "suspend",
+        "energy",
+        "hibernate",
+        "low power",
+        "power state",
+        "power management",
+        "device pm"
+      ],
+      "aliases": [
+        "pm",
+        "lpm"
+      ],
       "kconfig_patterns": [
-        "CONFIG_PM.*",
-        "CONFIG_PM_DEVICE.*",
-        "CONFIG_POWEROFF",
-        "CONFIG_CPU_IDLE"
+        "CONFIG_PM*",
+        "CONFIG_POWEROFF*",
+        "CONFIG_CPU_IDLE*"
       ],
       "dts_compatible": [],
+      "weight": 1.0,
       "path": "skills/power-performance",
       "files": [
         "SKILL.md",
@@ -279,15 +553,41 @@
     },
     {
       "name": "security-updates",
-      "description": "Secure boot and firmware update workflows for Zephyr RTOS. Covers MCUboot integration, image signing, DFU via MCUmgr, fail-safe rollback, and mbedTLS crypto. Trigger when implementing OTA updates, securing the boot process, or managing cryptographic keys.",
-      "keywords": ["mcuboot", "ota", "security", "signing", "dfu", "mcumgr", "rollback", "bootloader", "mbedtls", "crypto", "fota"],
-      "kconfig_patterns": [
-        "CONFIG_BOOTLOADER_MCUBOOT",
-        "CONFIG_MCUMGR.*",
-        "CONFIG_MBEDTLS.*",
-        "CONFIG_IMG_MANAGER"
+      "description": "Secure boot and firmware update workflows for Zephyr RTOS. Covers MCUboot integration, production image signing, DFU protocols (MCUmgr), fail-safe rollback mechanisms, and mbedTLS crypto basics. Trigger when implementing over-the-air (OTA) updates, securing the boot process, or managing cryptographic keys.",
+      "summary": "Secure boot and OTA updates \u2014 MCUboot, image signing, DFU/MCUmgr, rollback, mbedTLS.",
+      "keywords": [
+        "mcuboot",
+        "signing",
+        "sign",
+        "signed",
+        "bootloader",
+        "boot",
+        "rollback",
+        "mcumgr",
+        "dfu",
+        "ota",
+        "fota",
+        "mbedtls",
+        "imgtool",
+        "image",
+        "downgrade",
+        "downgrades",
+        "secure boot",
+        "firmware update",
+        "image slot"
       ],
-      "dts_compatible": ["fixed-partitions"],
+      "aliases": [],
+      "kconfig_patterns": [
+        "CONFIG_BOOTLOADER_MCUBOOT*",
+        "CONFIG_MCUBOOT*",
+        "CONFIG_MCUMGR*",
+        "CONFIG_IMG_MANAGER*",
+        "CONFIG_MBEDTLS*"
+      ],
+      "dts_compatible": [
+        "fixed-partitions"
+      ],
+      "weight": 1.0,
       "path": "skills/security-updates",
       "files": [
         "SKILL.md",
@@ -302,15 +602,35 @@
     },
     {
       "name": "specialized",
-      "description": "Specialized Zephyr RTOS subsystems: audio I2S, LVGL GUI, watchdog reliability, and fault injection testing. Trigger when adding audio, display interfaces, reliability monitoring, or fault tolerance.",
-      "keywords": ["audio", "i2s", "lvgl", "gui", "display", "watchdog", "fault", "reliability", "codec", "dac"],
-      "kconfig_patterns": [
-        "CONFIG_AUDIO.*",
-        "CONFIG_I2S.*",
-        "CONFIG_LVGL",
-        "CONFIG_WATCHDOG"
+      "description": "Specialized hardware interfaces and system reliability for Zephyr RTOS. Covers LVGL GUI development, Audio I2S/Codecs, Watchdog timers, and Fault Injection. Trigger when building human-machine interfaces (HMI), audio devices, or high-reliability mission-critical systems.",
+      "summary": "Specialized subsystems \u2014 LVGL display GUI, I2S audio, watchdog, fault injection.",
+      "keywords": [
+        "lvgl",
+        "display",
+        "audio",
+        "watchdog",
+        "wdt",
+        "codec",
+        "graphics",
+        "i2s",
+        "dac",
+        "gui",
+        "fault injection"
       ],
-      "dts_compatible": ["i2s-codec", "zephyr,lvgl-pointer-input"],
+      "aliases": [],
+      "kconfig_patterns": [
+        "CONFIG_LVGL*",
+        "CONFIG_AUDIO*",
+        "CONFIG_I2S*",
+        "CONFIG_WATCHDOG*",
+        "CONFIG_WDT*",
+        "CONFIG_DISPLAY*"
+      ],
+      "dts_compatible": [
+        "i2s-codec",
+        "zephyr,lvgl-pointer-input"
+      ],
+      "weight": 1.0,
       "path": "skills/specialized",
       "files": [
         "SKILL.md",
@@ -324,14 +644,29 @@
     },
     {
       "name": "storage",
-      "description": "Flash storage management for Zephyr RTOS. Covers NVS key-value storage, FAT filesystem, LittleFS, flash partition management, and wear levelling. Trigger when persisting data, managing file systems, or partitioning flash.",
-      "keywords": ["flash", "nvs", "storage", "littlefs", "fatfs", "partition", "filesystem", "wear levelling", "erase"],
+      "description": "Storage management for Zephyr RTOS. Covers Non-Volatile Storage (NVS) for persistent settings, flash partition management in Devicetree, and runtime flash layout access. Trigger when implementing persistent data storage, managing flash wear leveling, or configuring device partitions.",
+      "summary": "Flash storage \u2014 NVS key-value store, LittleFS and FAT filesystems, flash partitions.",
+      "keywords": [
+        "flash",
+        "nvs",
+        "littlefs",
+        "fatfs",
+        "filesystem",
+        "partition",
+        "partitions",
+        "storage",
+        "wear levelling",
+        "flash map",
+        "file system"
+      ],
+      "aliases": [
+        "fs"
+      ],
       "kconfig_patterns": [
-        "CONFIG_FLASH.*",
-        "CONFIG_NVS",
-        "CONFIG_FAT_FILESYSTEM_ELM",
-        "CONFIG_FILE_SYSTEM_LITTLEFS",
-        "CONFIG_FLASH_MAP"
+        "CONFIG_FLASH*",
+        "CONFIG_NVS*",
+        "CONFIG_FILE_SYSTEM*",
+        "CONFIG_FAT_FILESYSTEM*"
       ],
       "dts_compatible": [
         "fixed-partitions",
@@ -339,6 +674,7 @@
         "nordic,nrf-flash",
         "soc-nv-flash"
       ],
+      "weight": 1.0,
       "path": "skills/storage",
       "files": [
         "SKILL.md",
@@ -350,14 +686,42 @@
     },
     {
       "name": "testing-debugging",
-      "description": "Testing and debugging for Zephyr RTOS. Covers ztest framework, Twister test runner, GDB debugging, tracing, and CI integration. Trigger when writing unit tests, running hardware-in-the-loop tests, or debugging production issues.",
-      "keywords": ["ztest", "twister", "testing", "gdb", "debugging", "tracing", "coverage", "ci", "unit test", "integration test"],
+      "description": "Testing and debugging for Zephyr RTOS. Covers the Ztest framework for unit and integration tests, the Twister test runner for automated HIL/SIM validation, and advanced tracing/debugging techniques (SystemView, Thread Analyzer, Stack analysis). Trigger when writing unit tests, setting up CI/CD pipelines, or analyzing system performance and latency.",
+      "summary": "Testing and debugging \u2014 Ztest, the Twister runner and harnesses, tracing, stack analysis.",
+      "keywords": [
+        "ztest",
+        "twister",
+        "test",
+        "tests",
+        "testcase",
+        "tracing",
+        "trace",
+        "debugging",
+        "debug",
+        "gdb",
+        "coverage",
+        "systemview",
+        "stack",
+        "profiling",
+        "profile",
+        "stack overflow",
+        "thread analyzer",
+        "unit test",
+        "hardware-in-the-loop",
+        "pytest harness"
+      ],
+      "aliases": [
+        "hil"
+      ],
       "kconfig_patterns": [
-        "CONFIG_ZTEST.*",
-        "CONFIG_TRACING.*",
-        "CONFIG_DEBUG.*"
+        "CONFIG_ZTEST*",
+        "CONFIG_TRACING*",
+        "CONFIG_THREAD_ANALYZER*",
+        "CONFIG_STACK_SENTINEL*",
+        "CONFIG_COVERAGE*"
       ],
       "dts_compatible": [],
+      "weight": 1.0,
       "path": "skills/testing-debugging",
       "files": [
         "SKILL.md",
@@ -370,10 +734,32 @@
     },
     {
       "name": "zephyr-foundations",
-      "description": "Core Zephyr RTOS programming patterns. Covers Zephyr macros, error handling idioms, concurrency primitives, and Devicetree basics for driver authors. Trigger when starting a new Zephyr driver or learning core Zephyr APIs.",
-      "keywords": ["zephyr", "macros", "error handling", "concurrency", "errno", "kernel", "foundation", "api", "driver", "init"],
+      "description": "Foundational skills for Zephyr RTOS development. Covers essential Embedded C patterns (BIT, CONTAINER_OF), real-time concurrency primitives (mutexes, semaphores, spinlocks), hardware literacy (datasheet-to-DTS mapping), and defensive programming. Trigger when writing core application logic, drivers, or troubleshooting foundational behavior.",
+      "summary": "Core Zephyr C patterns \u2014 kernel macros, errno idioms, concurrency primitives, driver init.",
+      "keywords": [
+        "macro",
+        "macros",
+        "bit",
+        "genmask",
+        "bitmask",
+        "errno",
+        "concurrency",
+        "mutex",
+        "semaphore",
+        "spinlock",
+        "atomic",
+        "defensive",
+        "init",
+        "error handling",
+        "container_of",
+        "driver init",
+        "embedded c",
+        "build_assert"
+      ],
+      "aliases": [],
       "kconfig_patterns": [],
       "dts_compatible": [],
+      "weight": 1.0,
       "path": "skills/zephyr-foundations",
       "files": [
         "SKILL.md",
@@ -387,10 +773,13 @@
     },
     {
       "name": "zephyr-index",
-      "description": "Navigation hub for the Zephyr RTOS Agent Skill ecosystem. Use to discover, select, and navigate to specialised skills. Trigger when you are unsure which skill applies to your task.",
-      "keywords": ["index", "navigation", "catalog", "discovery", "skill", "overview", "help", "start"],
+      "description": "Static human-browsable catalog of the Zephyr RTOS skill set. Skill selection is handled by the zephyr-agent-skills entry point and by zephyr-cli skills suggest; this index is a reference listing only, not a task skill.",
+      "summary": "Navigation hub for the Zephyr skill catalog.",
+      "keywords": [],
+      "aliases": [],
       "kconfig_patterns": [],
       "dts_compatible": [],
+      "weight": 0.0,
       "path": "skills/zephyr-index",
       "files": [
         "SKILL.md",
@@ -403,10 +792,24 @@
     },
     {
       "name": "zephyr-module",
-      "description": "Out-of-tree Zephyr module development. Covers module.yml, west integration, external CMake library structure, and board/Kconfig extensions. Trigger when packaging reusable Zephyr components or integrating vendor SDKs.",
-      "keywords": ["module", "west", "out-of-tree", "module.yml", "external", "library", "vendor", "sdk", "cmake", "kconfig"],
+      "description": "Creating and integrating out-of-tree Zephyr modules. Covers module.yml configuration, Kconfig and CMake integration within a module, and West manifest inclusion. Trigger when developing reusable libraries, driver packages, or external software components for Zephyr.",
+      "summary": "Out-of-tree Zephyr modules \u2014 module.yml, west manifest integration, external library packaging.",
+      "keywords": [
+        "module",
+        "modules",
+        "vendor",
+        "component",
+        "external",
+        "out-of-tree",
+        "module.yml",
+        "external library",
+        "vendor sdk",
+        "reusable component"
+      ],
+      "aliases": [],
       "kconfig_patterns": [],
       "dts_compatible": [],
+      "weight": 1.0,
       "path": "skills/zephyr-module",
       "files": [
         "SKILL.md",

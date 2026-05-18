@@ -1,0 +1,23 @@
+# Matcher metadata for `zephyr-cli skills suggest` (index.json v2).
+# Curated and hand-editable; not consumed by the Claude Code skill loader.
+summary: Zephyr build stack — west workspaces and manifests, Kconfig, CMake, Sysbuild multi-image builds.
+keywords:
+- west
+- manifest
+- sysbuild
+- cmake
+- kconfig
+- menuconfig
+- workspace
+- ninja
+- cmakelists
+- prj.conf
+- name-allowlist
+- west.yml
+- west update
+- build error
+- extra_conf_file
+aliases: []
+kconfig_patterns: []
+dts_compatible: []
+weight: 1.0
