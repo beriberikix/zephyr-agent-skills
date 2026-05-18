@@ -1,0 +1,19 @@
+# Matcher metadata for `zephyr-cli skills suggest` (index.json v2).
+# Curated and hand-editable; not consumed by the Claude Code skill loader.
+summary: Host simulation on native_sim — build and run on Linux/macOS, host-side GDB and Valgrind.
+keywords:
+- native_sim
+- simulation
+- simulator
+- posix
+- host
+- laptop
+- valgrind
+- segfault
+- native sim
+- host build
+aliases:
+- sim
+kconfig_patterns: []
+dts_compatible: []
+weight: 1.0

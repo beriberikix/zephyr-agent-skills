@@ -1,93 +1,92 @@
 # Zephyr Agent Skills
 
-**A comprehensive knowledge base of professional skills for building with Zephyr RTOS.**
+**A registry of professional, agent-ready skills for building with Zephyr RTOS.**
 
-This repository contains a curated collection of "skills"—modular packages of knowledge, code patterns, and best practices—designed to assist AI agents and human developers in building high-quality embedded systems with Zephyr.
+This repository is a curated collection of "skills" — modular packages of knowledge, code
+patterns, and best practices that help AI agents and human developers build high-quality
+embedded systems with Zephyr. Each skill is a `SKILL.md` plus supporting `references/`,
+`scripts/`, and `assets/`.
 
-## 📚 Skill Catalog
+## Using the skills
 
-The master index for all skills is located within the `zephyr-index` skill:
+### With `zephyr-cli` (recommended)
 
-👉 **[Master Skill Catalog](skills/zephyr-index/references/skill_catalog.md)**
+[`zephyr-cli`](https://github.com/beriberikix/zephyr-cli) is the primary way agents consume
+this registry. It selects the right skill **deterministically** — no guessing:
 
-### Quick Links by Category
+```bash
+zephyr-cli skills suggest "enable an i2c sensor in my devicetree overlay"
+zephyr-cli skills install devicetree
+```
 
-#### Phase 1: Foundations
-*   **[zephyr-foundations](skills/zephyr-foundations/SKILL.md)**: Embedded C patterns & safe coding.
-*   **[build-system](skills/build-system/SKILL.md)**: West, Sysbuild, Kconfig, & CMake.
-*   **[devicetree](skills/devicetree/SKILL.md)**: Syntax, bindings, & hardware description.
-*   **[native-sim](skills/native-sim/SKILL.md)**: Simulation & host-based testing.
-*   **[board-bringup](skills/board-bringup/SKILL.md)**: Custom board definitions (HWMv2).
+`skills suggest` scores your task against every skill's keywords, aliases, Kconfig patterns,
+and devicetree compatibles and returns a ranked list with the reasons each matched.
+`skills install` fetches the chosen skill into your workspace.
 
-#### Phase 2: Core Features
-*   **[kernel-services](skills/kernel-services/SKILL.md)**: Threads, Work Queues, Zbus, & Logging.
-*   **[hardware-io](skills/hardware-io/SKILL.md)**: GPIO, I2C, SPI, DMA, & Sensors.
-*   **[power-performance](skills/power-performance/SKILL.md)**: PM states, optimized builds, & RAM tuning.
+### As a Claude Code plugin
 
-#### Phase 3: Connectivity
-*   **[connectivity-ble](skills/connectivity-ble/SKILL.md)**: Bluetooth Low Energy (GAP/GATT).
-*   **[connectivity-ip](skills/connectivity-ip/SKILL.md)**: IPv6, CoAP, MQTT, & LwM2M.
-*   **[connectivity-usb-can](skills/connectivity-usb-can/SKILL.md)**: USB device classes & CAN bus.
+The repository can also be added as a Claude Code plugin marketplace:
 
-#### Phase 4: Production & Specialized
-*   **[security-updates](skills/security-updates/SKILL.md)**: MCUboot, Image Signing, & DFU.
-*   **[iot-protocols](skills/iot-protocols/SKILL.md)**: OpenThread, Matter, & Golioth.
-*   **[multicore](skills/multicore/SKILL.md)**: SMP, OpenAMP, & IPC.
-*   **[industrial](skills/industrial/SKILL.md)**: Modbus RTU/TCP & CANopen.
-*   **[specialized](skills/specialized/SKILL.md)**: Audio, LVGL GUI, & Reliability.
+```bash
+claude plugin marketplace add beriberikix/zephyr-agent-skills
+claude plugin install zephyr-skills@zephyr-agent-skills
+```
 
----
+The umbrella `zephyr-skills` skill (the repo-root `SKILL.md`) is a broad entry point that
+routes agents to `zephyr-cli skills suggest` for deterministic skill selection.
 
-## 📂 Repository Structure
+## The registry — `index.json`
+
+`index.json` is the machine-readable registry consumed by `zephyr-cli`. It is a **generated
+artifact — do not edit it by hand.** It is built from each skill's `SKILL.md` frontmatter
+plus a per-skill `skill-meta.yaml` sidecar:
+
+```bash
+python scripts/generate_index.py
+```
+
+`skill-meta.yaml` holds the curated matcher metadata — `summary`, `keywords`, `aliases`,
+`kconfig_patterns`, `dts_compatible`, and `weight`. `scripts/validate_skills.py` (run in CI)
+keeps `index.json`, `.claude-plugin/marketplace.json`, and the skill set consistent.
+
+## Skill catalog
+
+👉 **[Master Skill Catalog](skills/zephyr-index/references/skill_catalog.md)** — every skill,
+grouped by domain (foundations & build, hardware & peripherals, connectivity, production &
+advanced). Or just run `zephyr-cli skills suggest` and let the matcher pick.
+
+## Repository structure
 
 ```
 .
-├── skills/                 # The core collection of skills
-│   ├── zephyr-index/       # Navigation hub
-│   ├── zephyr-foundations/ # Essential C & RTOS patterns
-│   └── ... (see catalog)
-├── .agent/                 # Agent-specific configurations
-└── README.md               # This file
+├── skills/                       # the skills — one directory each
+│   └── <skill>/
+│       ├── SKILL.md              # entry point (Quick Start + Validation Checklist)
+│       ├── skill-meta.yaml       # curated matcher metadata for the registry
+│       ├── references/           # detailed technical guides
+│       └── scripts/, assets/     # helper files (where applicable)
+├── index.json                    # generated machine-readable registry (consumed by zephyr-cli)
+├── SKILL.md                       # umbrella skill — Claude Code entry point
+├── scripts/
+│   ├── generate_index.py         # regenerates index.json
+│   ├── generate_marketplace.py   # regenerates .claude-plugin/marketplace.json
+│   └── validate_skills.py        # repository quality gate
+└── .claude-plugin/marketplace.json
 ```
 
-## 🛠 Usage
+## Contributing
 
-### For AI Agents
-*   **Discovery**: Start by reading `skills/zephyr-index/SKILL.md` to understand the available capabilities.
-*   **Implementation**: When a user requests a task (e.g., "Add BLE support"), locate the corresponding skill (`connectivity-ble`) and strictly follow the patterns in its `references/` directory.
-*   **Verification**: Use the code examples provided in `references/` as ground truth for syntax and API usage.
+Each skill is a self-contained directory: a `SKILL.md` (with `## Quick Start` and
+`## Validation Checklist` sections), a `skill-meta.yaml`, and optional `references/`,
+`scripts/`, and `assets/`.
 
-### For Human Developers
-*   **Learning**: Treat each skill as a focused tutorial. The `references/` folder in each skill contains "cheat sheets" for specific topics.
-*   **Best Practices**: The content emphasizes professional, production-ready patterns over simple "Hello World" examples.
+To add or change a skill:
 
-## 🧩 Claude Code Plugin
+1. Edit or create the skill under `skills/<name>/`.
+2. Update its `skill-meta.yaml` matcher metadata (`keywords`/`aliases` quality directly
+   drives `zephyr-cli skills suggest` accuracy).
+3. Run `python scripts/generate_index.py` and `python scripts/generate_marketplace.py`.
+4. Run `python scripts/validate_skills.py` — it must pass.
 
-This repository can be added as a plugin marketplace in Claude Code.
-
-### Installation
-
-1.  **Add the Marketplace**:
-    ```bash
-    claude plugin marketplace add beriberikix/zephyr-agent-skills
-    ```
-    *(Or `claude plugin marketplace add .` if working in a local clone)*
-
-2.  **Install All Skills**:
-    ```bash
-    claude plugin install zephyr-skills@zephyr-agent-skills
-    ```
-
-3.  **Install Specific Skills**:
-    ```bash
-    claude plugin install connectivity-ble@zephyr-agent-skills
-    ```
-
-## 🤝 Contributing
-
-Each skill is a self-contained directory with the following structure:
-*   `SKILL.md`: Entry point and quick start.
-*   `references/*.md`: Detailed technical guides and code snippets.
-*   `scripts/` & `assets/`: Helper files (where applicable).
-
-To add a new skill, use the `skill-creator` utility or follow the structure of existing skills.
+Commit the regenerated `index.json` and `marketplace.json`; CI verifies they are in sync
+with `skills/`.

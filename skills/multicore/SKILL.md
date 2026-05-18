@@ -29,6 +29,11 @@ Dynamically load and run binary modules at runtime without a full firmware updat
 - **Reference**: **[llext_basics.md](references/llext_basics.md)**
 - **Key Tools**: `CONFIG_LLEXT`, dynamic ELF loading, Symbol Export.
 
+### 5. Multi-domain SoCs (nRF5340)
+Build separate application-core and network-core images in one Sysbuild invocation.
+- **Reference**: **[multidomain_sysbuild.md](references/multidomain_sysbuild.md)**
+- **Key Tools**: `west build --sysbuild`, `CONFIG_NRF53_BOOT_NETWORK_CORE_ON_STARTUP`, domains.
+
 ## Quick Start (SMP prj.conf)
 ```kconfig
 # Enable SMP for dual-core SoCs
@@ -59,6 +64,7 @@ k_spin_unlock(&lock, key);
 - [ ] OpenAMP/RPMsg endpoint exchange passes bidirectional message tests.
 - [ ] IPC latency and throughput remain within target budget under load.
 - [ ] LLEXT module load/unload path resolves symbols and handles failure cases safely.
+- [ ] Multi-domain Sysbuild builds both core images and `west flash` programs each domain.
 
 ## Resources
 

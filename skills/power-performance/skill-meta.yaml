@@ -1,0 +1,25 @@
+# Matcher metadata for `zephyr-cli skills suggest` (index.json v2).
+# Curated and hand-editable; not consumed by the Claude Code skill loader.
+summary: Power management and performance — power states, sleep, wakeup sources, battery, latency.
+keywords:
+- power
+- sleep
+- wakeup
+- battery
+- idle
+- suspend
+- energy
+- hibernate
+- low power
+- power state
+- power management
+- device pm
+aliases:
+- pm
+- lpm
+kconfig_patterns:
+- CONFIG_PM*
+- CONFIG_POWEROFF*
+- CONFIG_CPU_IDLE*
+dts_compatible: []
+weight: 1.0

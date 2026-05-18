@@ -28,5 +28,11 @@ jobs:
       - name: Ensure Marketplace Is Committed
         run: git diff --exit-code .claude-plugin/marketplace.json
 
+      - name: Regenerate Skills Index
+        run: python scripts/generate_index.py
+
+      - name: Ensure Skills Index Is Committed
+        run: git diff --exit-code index.json
+
       - name: Run Skill Quality Validation
         run: python scripts/validate_skills.py

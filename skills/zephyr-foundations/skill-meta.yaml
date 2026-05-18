@@ -1,0 +1,26 @@
+# Matcher metadata for `zephyr-cli skills suggest` (index.json v2).
+# Curated and hand-editable; not consumed by the Claude Code skill loader.
+summary: Core Zephyr C patterns — kernel macros, errno idioms, concurrency primitives, driver init.
+keywords:
+- macro
+- macros
+- bit
+- genmask
+- bitmask
+- errno
+- concurrency
+- mutex
+- semaphore
+- spinlock
+- atomic
+- defensive
+- init
+- error handling
+- container_of
+- driver init
+- embedded c
+- build_assert
+aliases: []
+kconfig_patterns: []
+dts_compatible: []
+weight: 1.0

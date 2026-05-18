@@ -1,0 +1,26 @@
+# Matcher metadata for `zephyr-cli skills suggest` (index.json v2).
+# Curated and hand-editable; not consumed by the Claude Code skill loader.
+summary: Advanced kernel services — Zbus pub/sub, State Machine Framework, work queues, Settings.
+keywords:
+- zbus
+- smf
+- workqueue
+- delayable
+- settings
+- msgq
+- fifo
+- k_work
+- state
+- states
+- state machine
+- work queue
+- message queue
+- pub/sub
+aliases: []
+kconfig_patterns:
+- CONFIG_ZBUS*
+- CONFIG_SMF*
+- CONFIG_SETTINGS*
+- CONFIG_EVENTS*
+dts_compatible: []
+weight: 1.0

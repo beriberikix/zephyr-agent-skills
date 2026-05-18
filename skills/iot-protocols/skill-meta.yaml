@@ -1,0 +1,26 @@
+# Matcher metadata for `zephyr-cli skills suggest` (index.json v2).
+# Curated and hand-editable; not consumed by the Claude Code skill loader.
+summary: Long-range and mesh IoT — OpenThread, Matter, LoRaWAN, Golioth cloud.
+keywords:
+- openthread
+- matter
+- lorawan
+- lora
+- golioth
+- mesh
+- otbr
+- commissioning
+- provisioning
+- dataset
+- smart home
+- border router
+- thread mesh
+aliases:
+- iot
+kconfig_patterns:
+- CONFIG_OPENTHREAD*
+- CONFIG_CHIP*
+- CONFIG_LORAWAN*
+- CONFIG_NET_L2_OPENTHREAD*
+dts_compatible: []
+weight: 1.0

@@ -1,0 +1,33 @@
+# Matcher metadata for `zephyr-cli skills suggest` (index.json v2).
+# Curated and hand-editable; not consumed by the Claude Code skill loader.
+summary: Secure boot and OTA updates — MCUboot, image signing, DFU/MCUmgr, rollback, mbedTLS.
+keywords:
+- mcuboot
+- signing
+- sign
+- signed
+- bootloader
+- boot
+- rollback
+- mcumgr
+- dfu
+- ota
+- fota
+- mbedtls
+- imgtool
+- image
+- downgrade
+- downgrades
+- secure boot
+- firmware update
+- image slot
+aliases: []
+kconfig_patterns:
+- CONFIG_BOOTLOADER_MCUBOOT*
+- CONFIG_MCUBOOT*
+- CONFIG_MCUMGR*
+- CONFIG_IMG_MANAGER*
+- CONFIG_MBEDTLS*
+dts_compatible:
+- fixed-partitions
+weight: 1.0

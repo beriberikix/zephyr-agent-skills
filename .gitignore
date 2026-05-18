@@ -1,5 +1,10 @@
-.agent/skills/skill-creator/scripts/__pycache__/quick_validate.cpython-314.pyc
+# Python
+__pycache__/
+*.pyc
 
 # macOS Finder metadata
 .DS_Store
 **/.DS_Store
+
+# Local effectiveness-evaluation workspace and scaffolding (not part of the registry)
+skill-eval-workspace/
