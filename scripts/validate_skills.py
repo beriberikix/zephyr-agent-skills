@@ -205,8 +205,11 @@ def check_index(expected_skills: set[str]) -> list[str]:
     if extra:
         errors.append(f"index.json has unknown skill entries: {', '.join(extra)}")
 
-    for skill in skills:
-        name = skill.get("name", "?")
+    for i, skill in enumerate(skills):
+        name = skill.get("name")
+        if not name:
+            errors.append(f"index.json: skills[{i}] is missing a 'name' key")
+            continue
         if skill.get("path") != f"skills/{name}":
             errors.append(
                 f"index.json: {name}: path should be 'skills/{name}', got '{skill.get('path')}'"
@@ -218,6 +221,15 @@ def check_index(expected_skills: set[str]) -> list[str]:
             if not (SKILLS_DIR / name / rel).exists():
                 errors.append(f"index.json: {name}: listed file missing on disk: {rel}")
         for pat in skill.get("kconfig_patterns") or []:
+            # Pattern grammar: a Kconfig symbol charset plus '*' as the only
+            # wildcard. zephyr-cli's _kconfig_to_regex depends on exactly this
+            # — re.escape() leaves [A-Z0-9_] literal and '*' maps to '.*'.
+            # Reject anything else so the writer/reader contract stays crisp.
+            if not re.fullmatch(r"[A-Z0-9_*]+", pat):
+                errors.append(
+                    f"index.json: {name}: kconfig pattern '{pat}' has characters outside "
+                    f"[A-Z0-9_*] ('*' is the only wildcard)"
+                )
             try:
                 re.compile("^" + re.escape(pat).replace(r"\*", ".*") + "$")
             except re.error as exc:

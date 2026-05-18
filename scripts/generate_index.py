@@ -33,7 +33,9 @@ def skill_files(skill_dir: Path) -> list[str]:
         if any(part.startswith(".") or part == "__pycache__" for part in parts):
             continue
         rel = p.relative_to(skill_dir).as_posix()
-        if rel == "skill-meta.yaml" or rel.endswith(".pyc"):
+        # Match skill-meta.yaml by basename, not just at the skill root, so a
+        # stray copy in a subdirectory is still excluded from `files`.
+        if p.name == "skill-meta.yaml" or rel.endswith(".pyc"):
             continue
         out.append(rel)
     return out
